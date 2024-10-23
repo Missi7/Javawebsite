@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class NotContainVowels extends Throwable
+{
+    public String getMessage()
+    {
+    return "string does not contain vowels.";
+    }
+}
+class Exception7
+{
+    static void getString(String str) throws NotContainVowels
+    {
+    int i;
+    char ch;
+    boolean isVowel=false;
+    for(i=0;i&lt;str.length();i++)
+    {
+    ch = str.charAt(i);
+    if(ch == 'a' || ch == 'o' || ch == 'e' || ch =='i' || ch == 'u' || ch == 'A' || ch == 'O' || ch == 'E' || ch =='I' || ch == 'U')
+    {
+        isVowel=true;
+        break;
+    }
+    else
+    {
+        isVowel=false;
+    }
+}
+    if(!isVowel)
+    {
+    throw new NotContainVowels();
+    }
+    else
+{
+    System.out.println("String contain vowel");
+    }}
+public static void main(String st[])
+{
+    try
+    {
+    java.io.BufferedReader input = new java.io.BufferedReader(new java.InputStreamReader(System.in));
+    String str = input.readLine();
+    getString(str);
+    }
+    catch(java.io.IOException e)
+    {
+        System.out.println(e.getMessage());
+    }
+    catch(NotContainVowels e)
+    {
+        System.out.println(e.getMessage());
+    }
+}}
+<b><h3>Output:</h3></b>
+Misbah
+String contain vowel
+</pre>
+
+
+</body>
+
+</html>

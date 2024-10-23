@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class FileIsEmpty extends Throwable
+{
+    public String getMessage()
+    {
+    return "File is Empty!";
+    }
+}
+class Exception5
+{
+    public static void main(String st[])
+{
+    try
+    {
+    java.io.File file = new java.io.File("text.txt");
+    java.util.Scanner input = new java.util.Scanner(file);
+    if(!input.hasNextLine())
+    {
+        throw new FileIsEmpty();
+    }
+    else
+    {
+        System.out.println("File is not Empty");
+    }
+    }
+    catch (FileIsEmpty e)
+    {
+        System.out.println(e.getMessage()); 
+    }
+    catch(java.io.FileNotFoundException e)
+    {
+        System.out.println(e.getMessage());
+    }
+}   }
+
+<b><h3>Output:</h3></b>
+File is not Empty
+
+</pre>
+
+
+</body>
+
+</html>

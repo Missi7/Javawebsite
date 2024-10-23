@@ -29,36 +29,22 @@
 
 <body>
     <pre>
-// Write a Java program that takes five numbers as input to calculate and print the average of the numbers
+//5. How to convert String to float
 
-class Average{
-        public static void main(String st[])
-    {
-            java.io.InputStreamReader isr = new java.io.InputStreamReader(System.in);
-            java.io.BufferedReader br = new java.io.BufferedReader(isr);
-            double sum = 0;
-        try{
-            System.out.println("Enter five numbers : ");
-            for(int i = 0; i<5;i++){
-                System.out.print("number "+(i+1)+ ": ");
-                sum += Double.parseDouble(br.readLine());
-                
+    class StringToFloat{
+        public static void main(String sy[]){
+            String str = "1.23";
+            try{
+                float f = Float.parseFloat(str);
+                System.out.println("Converted float : "+f);
             }
-            double average = sum / 5;
-            System.out.println("Average : "+average);
+            catch(NumberFormatException ex){
+                System.out.println(ex.getMessage());
+            }
         }
-        catch(Throwable ex){
-            System.out.println("invalid input : "+ex.getMessage());
-        }
-        }
-}
+    }
 <b><h3>Output:</h3></b>
-number 1: 2
-number 2: 3
-number 3: 5
-number 4: 8
-number 5: 9
-Average : 5.4
+Converted float : 1.23
 </pre>
 
 

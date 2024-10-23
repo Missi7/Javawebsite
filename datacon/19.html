@@ -29,29 +29,16 @@
 
 <body>
     <pre>
-//Write a Java program to convert seconds to hour, minute and seconds
-    class Main{
+//19. How to convert char to int
+    class CharToInt{
         public static void main(String st[]){
-            java.util.Scanner scanner = new java.util.Scanner(System.in);
-            System.out.print("Enter Seconds : ");
-            int seconds = scanner.nextInt();
-            
-            int hours = seconds / 3600;
-            int minutes = (seconds % 3600)/60;
-            int sec = seconds % 60;
-    
-            System.out.println(seconds + " seconds is equal to");
-            System.out.println(hours + " hours");
-            System.out.println(minutes + " minutes");
-            System.out.println(sec +" sec");
+            char c = 'm';
+            int num = (int)c;
+            System.out.println("Converted int : "+num);
         }
     }
 <b><h3>Output:</h3></b>
-Enter Seconds : 7894
-7894 seconds is equal to
-2 hours
-11 minutes
-34 sec
+Converted int : 109
 </pre>
 
 

@@ -29,16 +29,22 @@
 
 <body>
     <pre>
-// Write a Java Program to print 'Hello World!' on screen
+//1. How to convert String to int
 
-    class Main{
-            public static void main(String x[]){
-            System.out.println("Hello World!");
+    class StringToInt{
+        public static void main(String st[]){
+            String str = "34";
+            try{
+                int num = Integer.parseInt(str);
+                System.out.println("Converted Integer : "+num);
+            }
+            catch(NumberFormatException ex){
+                System.out.println("Enter the valid input."+ex.getMessage());
+            }
         }
     }
-
 <b><h3>Output:</h3></b>
-Hello World!
+Converted Integer : 34
 </pre>
 
 

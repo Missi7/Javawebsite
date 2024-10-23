@@ -29,35 +29,16 @@
 
 <body>
     <pre>
-//Write a Java program to count the number of even and odd elements in a given array
-
-    class CountEvenOdd{
+//22. How to convert boolean to String
+    class BoolToString{
         public static void main(String st[]){
-            int array[] = {1,4,7,6,3};
-            System.out.print("Elements of an array : ");
-            for(int i = 0; i&lt; array.length; i++){
-                System.out.print(array[i] + " " );
-            }
-            int evenCount = 0;
-            int oddCount = 0;
-            for(int i = 0; i &lt; array.length; i++){
-                if(array[i] % 2 == 0){
-                    evenCount ++;	
-                }
-                else{
-                    oddCount++;
-                }
-            }
-            System.out.println();
-            System.out.println("Number of even elements : "+evenCount);
-            
-            System.out.println("Number of odd elements : "+oddCount);
-        }	
-    }
+            boolean bool = false;
+            String str = Boolean.toString(bool);
+            System.out.println("Converted String : "+str);
+        }
+    } 
 <b><h3>Output:</h3></b>
-Elements of an array : 1 4 7 6 3
-Number of even elements : 2
-Number of odd elements : 3
+Converted String : false
 </pre>
 
 

@@ -29,30 +29,22 @@
 
 <body>
     <pre>
-// Write a Java program that takes two numbers and display the product of two numbers.
-class Product{
-        private int num1, num2;
-        Product(int N1, int N2){
-            num1 = N1;
-            num2 = N2;
-            System.out.println("Value of num1 = "+num1);
-            System.out.println("Value of num2 = "+num2);    
-        }
-        int multi(){
-            return num1 * num2;
-        }
-    }
-    
-class Main{
-        public static void main(String args[]){
-            Product product = new Product(2,3);
-            System.out.println("The Product of num1 and num2 = "+product.multi());
+ //3. How to convert String to long
+
+    class StringToLong{
+        public static void main(String st[]){
+            String str = "34556575765";
+            try{
+                long num = Long.parseLong(str);
+                System.out.println("Converted long : "+num);
+            }
+            catch(NumberFormatException ex){
+                System.out.println(ex.getMessage());
+            }
         }
     }
 <b><h3>Output:</h3></b>
-Value of num1 = 2
-Value of num2 = 3
-The Product of num1 and num2 = 6
+Converted long : 34556575765
 </pre>
 
 

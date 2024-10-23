@@ -29,22 +29,22 @@
 
 <body>
     <pre>
-// Write a Java program to print the sum of two numbers
-    
-class Main{
-    public static void main(String x[]){
-    int num1 = 10, num2 = 20, sum;
-        
-    System.out.println("Value of Num1 = "+num1);
-    System.out.println("Value of Num2 = "+num2);
-        sum = num1 + num2;
-    System.out.println("The sum of "+num1+" and "+num2+" = "+sum);
+//2. How to convert int to String
+
+    class IntToString{
+        public static void main(String st[]){
+            int num = 56;
+            try{
+                String str = Integer.toString(num);
+                System.out.println("Converted String : "+num);
+            }
+            catch(NumberFormatException ex){
+                System.out.println("Enter the valid input."+ex.getMessage());
+            }
+        }
     }
-}
 <b><h3>Output:</h3></b>
-Value of Num1 = 10
-Value of Num2 = 20
-The sum of 10 and 20 = 30
+Converted String : 56
 </pre>
 
 

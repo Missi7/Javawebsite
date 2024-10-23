@@ -29,24 +29,17 @@
 
 <body>
     <pre>
-//Write a Java program and compute the sum of the digits of an integer.
+//10. How to convert Date to String
 
-    class SumOfDigits{
+    class DateToString{
         public static void main(String st[]){
-            int num = 786;
-            System.out.println("Number : " +num);
-            int sum = 0;
-            while(num!=0){
-                sum += num%10;
-                num /= 10;
-            }
-        
-        System.out.println("Sum of digits : " +sum);
+            java.util.Date date = new java.util.Date();
+            String str = date.toString();
+            System.out.println("Converted String : "+str);
         }
     }
 <b><h3>Output:</h3></b>
-Number : 786
-Sum of digits : 21
+Converted String : Thu Sep 19 20:56:00 IST 2024
 </pre>
 
 
