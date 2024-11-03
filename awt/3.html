@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.awt.*;
+import java.awt.event.*;
+class MyFrame extends Frame
+{
+    Button b1 = new Button("EAST");
+    Button b2 = new Button("NORTH");
+    Button b3 = new Button("WEST");
+    Button b4 = new Button("SOUTH");
+    Button b5 = new Button("CENTER");
+    MyFrame()
+    {
+        setBounds(100,100,400,400);
+        setLayout(new BorderLayout(10,10));
+                
+        //b1.setBounds(100,100,50,30);
+        add(b1,BorderLayout.EAST);
+        add(b2,BorderLayout.NORTH);
+        add(b3,BorderLayout.WEST);
+        add(b4,BorderLayout.SOUTH);
+        add(b5,BorderLayout.CENTER);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e)
+            {
+                System.exit(1);
+            }
+        });
+        setVisible(true);
+    }
+} 
+class Main {
+    public static void main(String[] args) {
+        new MyFrame();
+    }
+}
+<!-- <b><h3>Output:</h3></b> -->
+
+</pre>
+
+
+</body>
+
+</html>
