@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class Rectangle {
+private float width,height;
+float setWidth(float rWidth)
+{
+    width=rWidth;
+    return width;
+}
+float setHeigth(float rHeigth)
+{
+    height=rHeigth;
+    return height;
+}
+float area()
+{
+    return width*height;
+}
+float perimeter()
+{
+    return (2*(width+height));
+}
+void display()
+{
+    System.out.println("Perimeter of Rectangle : "+perimeter()+"
+    Area of Rectangle : "+area());
+}
+public static void main(String st[])
+{
+    Rectangle obj = new Rectangle();
+    obj.setWidth(15f);
+    obj.setHeigth(20f);
+    obj.perimeter();
+    obj.area();
+    obj.display();
+    }
+}
+<b><h3>Output:</h3></b>
+Perimeter of Rectangle : 70.0
+Area of Rectangle : 300.0
+</pre>
+
+
+</body>
+
+</html>

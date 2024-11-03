@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.util.ArrayList;
+import java.util.List;
+
+class MenuItem {
+    private String name;
+    private double price;
+    private List ratings;
+
+    public MenuItem(String name, double price) {
+        this.name = name;
+        this.price = price;
+        this.ratings = new ArrayList&lt;>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void addRating(int rating) {
+        if (rating >= 1 && rating &lt;= 5) {
+            ratings.add(rating);
+        } else {
+            System.out.println("Invalid rating. Please enter a rating between 1 and 5.");
+        }
+    }
+
+    public double getAverageRating() {
+        if (ratings.isEmpty()) {
+            return 0;
+        }
+        double sum = 0;
+        for (int rating : ratings) {
+            sum += rating;
+        }
+        return sum / ratings.size();
+    }
+
+    @Override
+    public String toString() {
+        return name + " - $" + price + " (Average Rating: " + String.format("%.2f", getAverageRating()) + ")";
+    }
+}
+
+class Restaurant {
+    private List menu;
+
+    public Restaurant() {
+        this.menu = new ArrayList&lt;>();
+    }
+
+    // Method to add a menu item
+    public void addMenuItem(String name, double price) {
+        menu.add(new MenuItem(name, price));
+        System.out.println("Added item: " + name + " - $" + price);
+    }
+
+    // Method to remove a menu item by name
+    public void removeMenuItem(String name) {
+        MenuItem itemToRemove = null;
+        for (MenuItem item : menu) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                itemToRemove = item;
+                break;
+            }
+        }
+        if (itemToRemove != null) {
+            menu.remove(itemToRemove);
+            System.out.println("Removed item: " + name);
+        } else {
+            System.out.println("Item not found: " + name);
+        }
+    }
+
+    // Method to add a rating to a menu item by name
+    public void addRating(String name, int rating) {
+        for (MenuItem item : menu) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                item.addRating(rating);
+                System.out.println("Added rating of " + rating + " to " + name);
+                return;
+            }
+        }
+        System.out.println("Item not found: " + name);
+    }
+
+    // Method to calculate the average rating of all items
+    public double calculateAverageRating() {
+        if (menu.isEmpty()) {
+            return 0;
+        }
+        double totalRating = 0;
+        int count = 0;
+        for (MenuItem item : menu) {
+            totalRating += item.getAverageRating();
+            if (item.getAverageRating() > 0) {
+                count++;
+            }
+        }
+        return count == 0 ? 0 : totalRating / count;
+    }
+
+    // Method to display the menu
+    public void displayMenu() {
+        System.out.println("Menu:");
+        for (MenuItem item : menu) {
+            System.out.println(item);
+        }
+    }
+}
+
+public class RestaurantApp {
+    public static void main(String[] args) {
+        Restaurant restaurant = new Restaurant();
+
+        // Adding menu items
+        restaurant.addMenuItem("Pasta", 12.99);
+        restaurant.addMenuItem("Pizza", 15.49);
+        restaurant.addMenuItem("Burger", 8.99);
+
+        // Displaying the menu
+        restaurant.displayMenu();
+
+        // Adding ratings
+        restaurant.addRating("Pasta", 5);
+        restaurant.addRating("Pasta", 4);
+        restaurant.addRating("Pizza", 3);
+        restaurant.addRating("Burger", 5);
+        restaurant.addRating("Burger", 4);
+
+        // Displaying the menu with ratings
+        System.out.println("
+Updated Menu:");
+        restaurant.displayMenu();
+
+        // Calculating and displaying the average rating of all items
+System.out.println("Average Rating of All Items: " + String.format("%.2f", restaurant.calculateAverageRating()));
+
+        // Removing a menu item
+        restaurant.removeMenuItem("Pizza");
+
+        // Displaying the menu after removal
+        System.out.println("Menu After Removal:");
+        restaurant.displayMenu();
+    }
+}
+<b><h3>Output:</h3></b>
+Added item: Pasta - $12.99
+Added item: Pizza - $15.49
+Added item: Burger - $8.99
+Menu:
+Pasta - $12.99 (Average Rating: 0.00)
+Pizza - $15.49 (Average Rating: 0.00)
+Burger - $8.99 (Average Rating: 0.00)
+Added rating of 5 to Pasta
+Added rating of 4 to Pasta
+Added rating of 3 to Pizza
+Added rating of 5 to Burger
+Added rating of 4 to Burger
+
+Updated Menu:
+Pasta - $12.99 (Average Rating: 4.50)
+Pizza - $15.49 (Average Rating: 3.00)
+Burger - $8.99 (Average Rating: 4.50)
+
+Average Rating of All Items: 4.00
+Removed item: Pizza
+
+Menu After Removal:
+Pasta - $12.99 (Average Rating: 4.50)
+Burger - $8.99 (Average Rating: 4.50)
+</pre>
+
+
+</body>
+
+</html>

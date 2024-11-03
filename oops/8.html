@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class TrafficLight {
+    private String color;    // Current color of the traffic light
+    private int duration;    // Duration for which the color is displayed in seconds
+        
+    // Constructor
+    public TrafficLight(String color, int duration) {
+        this.color = color;
+        this.duration = duration;
+    }
+        
+    // Method to change the color of the traffic light
+    public void changeColor(String newColor, int newDuration) {
+        this.color = newColor;
+        this.duration = newDuration;
+        System.out.println("Traffic light changed to: " + color + " for " + 
+        duration + " seconds.");
+    }
+        
+    // Method to check if the light is red
+    public boolean isRed() {
+        return color.equalsIgnoreCase("red");
+    }
+        
+    // Method to check if the light is green
+    public boolean isGreen() {
+        return color.equalsIgnoreCase("green");
+    }
+        
+    // Method to display current status
+    public void displayStatus() {
+        System.out.println("Current color: " + color + ", Duration: " +
+         duration + " seconds.");
+    }
+}
+        
+public class TrafficLightSystem {
+public static void main(String[] args) {
+    // Create a TrafficLight object
+    TrafficLight trafficLight = new TrafficLight("Red", 30);
+        
+    // Display current status
+    trafficLight.displayStatus();
+        
+    // Check if the light is red or green
+    System.out.println("Is the light red? " + trafficLight.isRed());
+    System.out.println("Is the light green? " + trafficLight.isGreen());
+        
+    // Change the color to green
+    trafficLight.changeColor("Green", 45);
+        
+    // Display current status again
+    trafficLight.displayStatus();
+        
+    // Check again if the light is red or green
+    System.out.println("Is the light red? " + trafficLight.isRed());
+    System.out.println("Is the light green? " + trafficLight.isGreen());
+    }
+}
+<b><h3>Output:</h3></b>
+Current color: Red, Duration: 30 seconds.
+Is the light red? true
+Is the light green? false
+Traffic light changed to: Green for 45 seconds.
+Current color: Green, Duration: 45 seconds.
+Is the light red? false
+Is the light green? true
+</pre>
+
+
+</body>
+
+</html>

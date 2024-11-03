@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+abstract class Shape {
+    // Abstract methods for calculating area and perimeter
+    public abstract double calculateArea();
+    public abstract double calculatePerimeter();
+}
+        
+class Rectangle extends Shape {
+    private double length;
+    private double width;
+        
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+        
+    @Override
+    public double calculateArea() {
+        return length * width;
+    }
+        
+    @Override
+    public double calculatePerimeter() {
+        return 2 * (length + width);
+    }
+}
+        
+class Circle extends Shape {
+    private double radius;
+        
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+        
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+        
+    @Override
+    public double calculatePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+        
+class Triangle extends Shape {
+    private double sideA;
+    private double sideB;
+    private double sideC;
+        
+    public Triangle(double sideA, double sideB, double sideC) {
+        this.sideA = sideA;
+        this.sideB = sideB;
+        this.sideC = sideC;
+    }
+        
+    @Override
+    public double calculateArea() {
+        double s = (sideA + sideB + sideC) / 2; // semi-perimeter
+        return Math.sqrt(s * (s - sideA) * (s - sideB) * (s - sideC));
+    }
+        
+    @Override
+    public double calculatePerimeter() {
+        return sideA + sideB + sideC;
+    }
+}
+        
+public class ShapeDemo {
+    public static void main(String[] args) {
+        Shape rectangle = new Rectangle(5, 3);
+        System.out.println("Rectangle Area: " + rectangle.calculateArea());
+        System.out.println("Rectangle Perimeter: " + rectangle.calculatePerimeter());
+        
+        Shape circle = new Circle(4);
+        System.out.println("Circle Area: " + circle.calculateArea());
+        System.out.println("Circle Perimeter: " + circle.calculatePerimeter());
+        
+        Shape triangle = new Triangle(3, 4, 5);
+        System.out.println("Triangle Area: " + triangle.calculateArea());
+        System.out.println("Triangle Perimeter: " + triangle.calculatePerimeter());
+    }
+}
+<b><h3>Output:</h3></b>
+Rectangle Area: 15.0
+Rectangle Perimeter: 16.0
+Circle Area: 50.26548245743669
+Circle Perimeter: 25.132741228718345
+Triangle Area: 6.0
+Triangle Perimeter: 12.0
+</pre>
+
+
+</body>
+
+</html>

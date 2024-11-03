@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.util.Scanner;
+
+class AreaCalculator {
+    
+    // Method to calculate the area of a circle
+    public double area(double radius) {
+        return Math.PI * radius * radius; // Area = π * r²
+    }
+
+    // Method to calculate the area of a rectangle
+    public double area(double length, double width) {
+        return length * width; // Area = length * width
+    }
+}
+
+public class AreaApp {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        AreaCalculator calculator = new AreaCalculator();
+
+        // Calculate area of a circle
+        System.out.print("Enter the radius of the circle: ");
+        double radius = scanner.nextDouble();
+        double circleArea = calculator.area(radius);
+        System.out.println("Area of the circle: " + circleArea);
+
+        // Calculate area of a rectangle
+        System.out.print("Enter the length of the rectangle: ");
+        double length = scanner.nextDouble();
+        System.out.print("Enter the width of the rectangle: ");
+        double width = scanner.nextDouble();
+        double rectangleArea = calculator.area(length, width);
+        System.out.println("Area of the rectangle: " + rectangleArea);
+
+        scanner.close();
+    }
+}
+<b><h3>Output:</h3></b>
+Enter the radius of the circle: 5
+Area of the circle: 78.53981633974483
+Enter the length of the rectangle: 4
+Enter the width of the rectangle: 6
+Area of the rectangle: 24.0
+</pre>
+
+
+</body>
+
+</html>

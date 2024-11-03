@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class Car {
+    // Private instance variables
+    private String company_name;
+    private String model_name;
+    private int year;
+    private double mileage;
+        
+    // Constructor
+    public Car(String company_name, String model_name, int year, double mileage) {
+        this.company_name = company_name;
+        this.model_name = model_name;
+        this.year = year;
+        this.mileage = mileage; // Mileage is set once during initialization
+    }
+        
+    // Getter for company_name
+    public String getCompanyName() {
+        return company_name;
+    }
+        
+    // Setter for company_name
+    public void setCompanyName(String company_name) {
+        this.company_name = company_name;
+    }
+        
+    // Getter for model_name
+    public String getModelName() {
+        return model_name;
+    }
+        
+    // Setter for model_name
+    public void setModelName(String model_name) {
+        this.model_name = model_name;
+    }
+        
+    // Getter for year
+    public int getYear() {
+        return year;
+    }
+        
+    // Setter for year
+    public void setYear(int year) {
+        this.year = year;
+    }
+        
+    // Getter for mileage
+    public double getMileage() {
+        return mileage; // No setter for mileage
+    }
+        
+    // Method to display car details
+    public void displayCarInfo() {
+        System.out.println("Car Company: " + company_name);
+        System.out.println("Car Model: " + model_name);
+        System.out.println("Year: " + year);
+        System.out.println("Mileage: " + mileage);
+    }
+}
+        
+public class CarApp {
+    public static void main(String[] args) {
+        // Creating a Car object
+        Car car = new Car("Toyota", "Camry", 2020, 15000.5);
+        
+        // Displaying initial car details
+        System.out.println("Initial Car Details:");
+        car.displayCarInfo();
+        
+        // Modifying car details
+        car.setCompanyName("Honda");
+        car.setModelName("Accord");
+        car.setYear(2021);
+        
+        // Displaying updated car details
+        System.out.println("Updated Car Details:");
+        car.displayCarInfo();
+        
+// Attempting to set mileage (not allowed)
+// car.setMileage(20000.0); // Uncommenting this line would cause a compilation error
+    }
+}
+<b><h3>Output:</h3></b>
+Initial Car Details:
+Car Company: Toyota
+Car Model: Camry
+Year: 2020
+Mileage: 15000.5
+
+Updated Car Details:
+Car Company: Honda
+Car Model: Accord
+Year: 2021
+Mileage: 15000.5
+</pre>
+
+
+</body>
+
+</html>

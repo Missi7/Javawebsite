@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.util.ArrayList;
+import java.util.List;
+        
+class Flight {
+    private String flightNumber;
+    private String origin;
+    private String destination;
+    private String departureTime;
+        
+public Flight(String flightNumber, String origin, String destination, String departureTime) {
+    this.flightNumber = flightNumber;
+    this.origin = origin;
+    this.destination = destination;
+    this.departureTime = departureTime;
+}
+        
+public String getFlightNumber() {
+    return flightNumber;
+}
+        
+public String getOrigin() {
+    return origin;
+}
+        
+public String getDestination() {
+    return destination;
+}
+        
+public String getDepartureTime() {
+    return departureTime;
+}
+        
+@Override
+public String toString() {
+return "Flight " + flightNumber + " from " + origin + " to " + destination + " at " + departureTime;
+}
+}
+        
+class Hotel {
+private String name;
+private String location;
+private double pricePerNight;
+        
+public Hotel(String name, String location, double pricePerNight) {
+    this.name = name;
+    this.location = location;
+    this.pricePerNight = pricePerNight;
+}
+        
+public String getName() {
+    return name;
+}
+        
+public String getLocation() {
+    return location;
+}
+        
+public double getPricePerNight() {
+    return pricePerNight;
+}
+        
+@Override
+public String toString() {
+    return name + " in " + location + " - $" + pricePerNight + " per night";
+}
+}
+        
+class Reservation {
+private String type; // "Flight" or "Hotel"
+private String details;
+        
+public Reservation(String type, String details) {
+    this.type = type;
+    this.details = details;
+}
+        
+public String getType() {
+    return type;
+}
+        
+public String getDetails() {
+    return details;
+}
+        
+@Override
+public String toString() {
+    return type + " Reservation: " + details;
+}
+}
+class TravelBooking {
+private List flights;
+private List hotels;
+private List reservations;
+        
+public TravelBooking() {
+    flights = new ArrayList&lt;>();
+    hotels = new ArrayList&lt;>();
+    reservations = new ArrayList&lt;>();
+        
+    // Adding sample data for flights and hotels
+    flights.add(new Flight("AA101", "New York", "Los Angeles", "10:00 AM"));
+    flights.add(new Flight("UA202", "Chicago", "Miami", "12:30 PM"));
+    flights.add(new Flight("DL303", "San Francisco", "Seattle", "3:45 PM"));
+        
+    hotels.add(new Hotel("Grand Hotel", "Los Angeles", 150.00));
+    hotels.add(new Hotel("Beach Resort", "Miami", 200.00));
+    hotels.add(new Hotel("Mountain Inn", "Seattle", 120.00));
+}
+        
+// Method to search for flights by destination
+public List searchFlights(String destination) {
+    List result = new ArrayList&lt;>();
+    for (Flight flight : flights) {
+    if (flight.getDestination().equalsIgnoreCase(destination)) {
+        result.add(flight);
+    }
+}
+    return result;
+}
+        
+// Method to search for hotels by location
+public List searchHotels(String location) {
+    List result = new ArrayList&lt;>();
+    for (Hotel hotel : hotels) {
+        if (hotel.getLocation().equalsIgnoreCase(location)) {
+            result.add(hotel);
+        }
+    }
+    return result;
+}
+        
+// Method to book a reservation
+public void bookReservation(String type, String details) {
+    reservations.add(new Reservation(type, details));
+    System.out.println(type + " reservation booked: " + details);
+}
+        
+// Method to cancel a reservation by details
+public void cancelReservation(String type, String details) {
+    Reservation toRemove = null;
+    for (Reservation reservation : reservations) {
+        if (reservation.getType().equalsIgnoreCase(type) && reservation.getDetails().equalsIgnoreCase(details)) {
+        toRemove = reservation;
+        break;
+        }
+}
+    if (toRemove != null) {
+        reservations.remove(toRemove);
+        System.out.println(type + " reservation canceled: " + details);
+    } else {
+        System.out.println(type + " reservation not found: " + details);
+        }
+}
+        
+// Method to display all reservations
+public void displayReservations() {
+    System.out.println("Current Reservations:");
+    if (reservations.isEmpty()) {
+        System.out.println("No reservations found.");
+    } else {
+        for (Reservation reservation : reservations) {
+            System.out.println(reservation);
+        }
+    }
+}
+}
+        
+public class TravelBookingApp {
+public static void main(String[] args) {
+    TravelBooking travelBooking = new TravelBooking();
+        
+    // Search for flights to Los Angeles
+    System.out.println("Flights to Los Angeles:");
+    List flightsToLA = travelBooking.searchFlights("Los Angeles");
+    for (Flight flight : flightsToLA) {
+        System.out.println(flight);
+    }
+        
+    // Search for hotels in Miami
+    System.out.println("Hotels in Miami:");
+    List hotelsInMiami = travelBooking.searchHotels("Miami");
+    for (Hotel hotel : hotelsInMiami) {
+        System.out.println(hotel);
+    }
+        
+    // Book a flight reservation
+    if (!flightsToLA.isEmpty()) {
+        travelBooking.bookReservation("Flight", flightsToLA.get(0).toString());
+    }
+        
+    // Book a hotel reservation
+    if (!hotelsInMiami.isEmpty()) {
+        travelBooking.bookReservation("Hotel", hotelsInMiami.get(0).toString());
+    }
+        
+    // Display all reservations
+    System.out.println("All Reservations:");
+    travelBooking.displayReservations();
+        
+    // Cancel a flight reservation
+    if (!flightsToLA.isEmpty()) {
+        travelBooking.cancelReservation("Flight", flightsToLA.get(0).toString());
+    }
+        
+    // Display all reservations after cancellation
+    System.out.println("Reservations After Cancellation:");
+    travelBooking.displayReservations();
+}
+}
+<b><h3>Output:</h3></b>
+Flights to Los Angeles:
+Flight AA101 from New York to Los Angeles at 10:00 AM
+
+Hotels in Miami:
+Beach Resort in Miami - $200.0 per night
+
+Flight reservation booked: Flight AA101 from New York to Los Angeles at 10:00 AM
+Hotel reservation booked: Beach Resort in Miami - $200.0 per night
+
+All Reservations:
+Flight Reservation: Flight AA101 from New York to Los Angeles at 10:00 AM
+Hotel Reservation: Beach Resort in Miami - $200.0 per night
+
+Flight reservation canceled: Flight AA101 from New York to Los Angeles at 10:00 AM
+
+Reservations After Cancellation:
+Hotel Reservation: Beach Resort in Miami - $200.0 per night
+</pre>
+
+
+</body>
+
+</html>

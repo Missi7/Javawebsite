@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class BankAccount {
+    // Private instance variables
+    private String accountNumber;
+    private double balance;
+        
+    // Constructor
+    public BankAccount(String accountNumber, double initialBalance) {
+        this.accountNumber = accountNumber;
+        this.balance = initialBalance;
+    }
+        
+    // Getter for accountNumber
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+        
+    // Setter for accountNumber
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+        
+    // Getter for balance
+    public double getBalance() {
+        return balance;
+    }
+        
+    // Setter for balance (with validation)
+    public void setBalance(double balance) {
+        if (balance >= 0) { // Validate balance
+            this.balance = balance;
+        } else {
+            System.out.println("Balance cannot be negative.");
+        }
+    }
+        
+    // Method to deposit money
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: " + amount);
+        } else {
+            System.out.println("Deposit amount must be positive.");
+        }
+    }
+        
+    // Method to withdraw money
+    public void withdraw(double amount) {
+        if (amount > 0 && amount &lt;= balance) {
+            balance -= amount;
+            System.out.println("Withdrew: " + amount);
+        } else if (amount > balance) {
+            System.out.println("Insufficient balance for withdrawal.");
+        } else {
+            System.out.println("Withdrawal amount must be positive.");
+        }
+    }
+        
+    // Method to display account details
+    public void displayAccountInfo() {
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Balance: " + balance);
+    }
+}
+        
+public class BankAccountApp {
+    public static void main(String[] args) {
+        // Creating a BankAccount object
+        BankAccount account = new BankAccount("123456789", 1000.0);
+        
+        // Displaying account details
+        System.out.println("Initial Account Details:");
+        account.displayAccountInfo();
+        
+        // Modifying account details
+        account.setAccountNumber("987654321");
+        account.setBalance(1500.0);
+        
+        // Displaying updated account details
+        System.out.println("Updated Account Details:");
+        account.displayAccountInfo();
+        
+        // Testing deposit and withdraw methods
+        account.deposit(500.0); // Depositing money
+        account.withdraw(300.0); // Withdrawing money
+        
+        // Displaying final account details
+        System.out.println("Final Account Details:");
+        account.displayAccountInfo();
+        
+        // Attempting to set a negative balance
+        account.setBalance(-100.0); // Should print an error message
+    }
+}
+<b><h3>Output:</h3></b>
+Initial Account Details:
+Account Number: 123456789
+Balance: 1000.0
+
+Updated Account Details:
+Account Number: 987654321
+Balance: 1500.0
+Deposited: 500.0
+Withdrew: 300.0
+
+Final Account Details:
+Account Number: 987654321
+Balance: 1700.0
+Balance cannot be negative.
+</pre>
+
+
+</body>
+
+</html>

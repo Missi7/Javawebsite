@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class Person{
+private String name;
+private int age;
+Person(String pName , int pAge){
+    name = pName;
+    age = pAge;
+}
+void display(){
+    System.out.println("Name : "+name+"Age : "+age);
+}
+public static void main(String st[])
+{
+    Person obj1=new Person("Misbah",20);
+    obj1.display();
+    Person obj2=new Person("Suhail",22);
+    obj2.display();
+}
+}
+<b><h3>Output:</h3></b>
+Name : Manjit
+Age : 18
+Name : Sandeep
+Age : 24
+</pre>
+
+
+</body>
+
+</html>

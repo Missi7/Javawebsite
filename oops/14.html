@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.util.ArrayList;
+import java.util.List;
+
+class Person {
+    private String name;
+    
+    public Person(String name) {
+        this.name = name;
+    }
+    
+    public String getName() {
+        return name;
+    }
+}
+
+class Student extends Person {
+    public Student(String name) {
+        super(name);
+    }
+}
+
+class Teacher extends Person {
+    public Teacher(String name) {
+        super(name);
+    }
+}
+
+class SchoolClass {
+    private String className;
+    private Teacher teacher;
+    private List students;
+    
+    public SchoolClass(String className, Teacher teacher) {
+        this.className = className;
+        this.teacher = teacher;
+        this.students = new ArrayList&lt;>();
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void addStudent(Student student) {
+        students.add(student);
+        System.out.println("Student " + student.getName() + " added to class " + className);
+    }
+
+    public void removeStudent(Student student) {
+        if (students.remove(student)) {
+            System.out.println("Student " + student.getName() + " removed from class " + className);
+        } else {
+            System.out.println("Student " + student.getName() + " not found in class " + className);
+        }
+    }
+
+    public void displayClassInfo() {
+        System.out.println("Class: " + className);
+        System.out.println("Teacher: " + teacher.getName());
+        System.out.println("Students:");
+        for (Student student : students) {
+            System.out.println("- " + student.getName());
+        }
+    }
+}
+
+class School {
+    private List students;
+    private List teachers;
+    private List classes;
+
+    public School() {
+        students = new ArrayList&lt;>();
+        teachers = new ArrayList&lt;>();
+        classes = new ArrayList&lt;>();
+    }
+
+    // Add a student to the school
+    public void addStudent(String name) {
+        Student student = new Student(name);
+        students.add(student);
+        System.out.println("Student " + name + " added to the school.");
+    }
+
+    // Remove a student from the school
+    public void removeStudent(String name) {
+        Student student = findStudentByName(name);
+        if (student != null) {
+            students.remove(student);
+            System.out.println("Student " + name + " removed from the school.");
+        } else {
+            System.out.println("Student " + name + " not found.");
+        }
+    }
+
+    // Add a teacher to the school
+    public void addTeacher(String name) {
+        Teacher teacher = new Teacher(name);
+        teachers.add(teacher);
+        System.out.println("Teacher " + name + " added to the school.");
+    }
+
+    // Remove a teacher from the school
+    public void removeTeacher(String name) {
+        Teacher teacher = findTeacherByName(name);
+        if (teacher != null) {
+            teachers.remove(teacher);
+            System.out.println("Teacher " + name + " removed from the school.");
+        } else {
+            System.out.println("Teacher " + name + " not found.");
+        }
+    }
+
+    // Create a new class
+    public void createClass(String className, String teacherName) {
+        Teacher teacher = findTeacherByName(teacherName);
+        if (teacher != null) {
+            SchoolClass schoolClass = new SchoolClass(className, teacher);
+            classes.add(schoolClass);
+            System.out.println("Class " + className + " created with teacher " + teacherName);
+        } else {
+            System.out.println("Teacher " + teacherName + " not found. Cannot create class.");
+        }
+    }
+
+    // Enroll a student into a specific class
+    public void enrollStudentInClass(String studentName, String className) {
+        Student student = findStudentByName(studentName);
+        SchoolClass schoolClass = findClassByName(className);
+        
+        if (student != null && schoolClass != null) {
+            schoolClass.addStudent(student);
+        } else {
+            System.out.println("Cannot enroll student. Either student or class not found.");
+        }
+    }
+
+    // Find a student by name
+    private Student findStudentByName(String name) {
+        for (Student student : students) {
+            if (student.getName().equals(name)) {
+                return student;
+            }
+        }
+        return null;
+    }
+
+    // Find a teacher by name
+    private Teacher findTeacherByName(String name) {
+        for (Teacher teacher : teachers) {
+            if (teacher.getName().equals(name)) {
+                return teacher;
+            }
+        }
+        return null;
+    }
+
+    // Find a class by name
+    private SchoolClass findClassByName(String className) {
+        for (SchoolClass schoolClass : classes) {
+            if (schoolClass.getClassName().equals(className)) {
+                return schoolClass;
+            }
+        }
+        return null;
+    }
+
+    // Display all classes and their details
+    public void displaySchoolInfo() {
+        System.out.println("School Information:");
+        for (SchoolClass schoolClass : classes) {
+            schoolClass.displayClassInfo();
+        }
+    }
+}
+
+public class SchoolManagement {
+    public static void main(String[] args) {
+        School school = new School();
+
+        // Add students to the school
+        school.addStudent("Alice");
+        school.addStudent("Bob");
+
+        // Add teachers to the school
+        school.addTeacher("Mr. Smith");
+        school.addTeacher("Ms. Johnson");
+
+        // Create a class and assign a teacher
+        school.createClass("Math 101", "Mr. Smith");
+
+        // Enroll students in the class
+        school.enrollStudentInClass("Alice", "Math 101");
+        school.enrollStudentInClass("Bob", "Math 101");
+
+        // Display information about the school
+        school.displaySchoolInfo();
+    }
+}
+<b><h3>Output:</h3></b>
+Student Alice added to the school.
+Student Bob added to the school.
+Teacher Mr. Smith added to the school.
+Teacher Ms. Johnson added to the school.
+Class Math 101 created with teacher Mr. Smith
+Student Alice added to class Math 101
+Student Bob added to class Math 101
+School Information:
+Class: Math 101
+Teacher: Mr. Smith
+Students:
+- Alice
+- Bob
+</pre>
+
+
+</body>
+
+</html>

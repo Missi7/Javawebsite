@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class Circle {
+    // Private instance variable
+    private double radius;
+        
+    // Constructor
+    public Circle(double radius) {
+        setRadius(radius); // Use setter for validation
+    }
+        
+    // Getter for radius
+    public double getRadius() {
+        return radius;
+    }
+        
+    // Setter for radius
+    public void setRadius(double radius) {
+        if (radius > 0) { // Validate radius
+            this.radius = radius;
+        } else {
+            System.out.println("Radius must be positive.");
+        }
+    }
+        
+    // Method to calculate area of the circle
+    public double calculateArea() {
+    return Math.PI * radius * radius; // Area = π * r²
+    }
+        
+    // Method to calculate perimeter (circumference) of the circle
+    public double calculatePerimeter() {
+        return 2 * Math.PI * radius; // Perimeter = 2 * π * r
+    }
+        
+    // Method to display circle details
+    public void displayCircleInfo() {
+        System.out.println("Circle Radius: " + radius);
+        System.out.println("Area: " + calculateArea());
+        System.out.println("Perimeter: " + calculatePerimeter());
+    }
+}
+        
+public class CircleApp {
+    public static void main(String[] args) {
+        // Creating a Circle object
+        Circle circle = new Circle(5.0);
+        
+        // Displaying initial circle details
+        System.out.println("Initial Circle Details:");
+        circle.displayCircleInfo();
+        
+        // Modifying the radius
+        circle.setRadius(7.0);
+        
+        // Displaying updated circle details
+        System.out.println("Updated Circle Details:");
+        circle.displayCircleInfo();
+        
+        // Attempting to set a negative radius
+        circle.setRadius(-3.0); // Should print an error message
+    }
+}
+<b><h3>Output:</h3></b>
+Initial Circle Details:
+Circle Radius: 5.0
+Area: 78.53981633974483
+Perimeter: 31.41592653589793
+
+Updated Circle Details:
+Circle Radius: 7.0
+Area: 153.93804002589985
+Perimeter: 43.982297150257104
+Radius must be positive.
+</pre>
+
+
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class Circle{
+final private float PI = 3.14f;
+private float radius;
+Circle(float cRadius)
+{
+    radius=cRadius;
+}
+float getRadius()
+{
+    return radius;
+}
+void setRadius(float cRadius)
+{
+    radius=cRadius;
+}
+float area()
+{
+    return PI*(radius*radius);
+}
+float circumference()
+{
+    return 2*PI*radius;
+}
+public static void main (String st[]){
+    Circle obj = new Circle(7.0f);
+    System.out.println("Radius : "+obj.getRadius());
+    System.out.println("Perimeter of Circle : "+obj.circumference());
+    System.out.println("Area of Circle : "+obj.area());
+    obj.setRadius(14f);
+    System.out.println("New Radius : "+obj.getRadius());
+    System.out.println("New Perimeter of Circle : "+obj.circumference());
+    System.out.println("New Area of Circle : "+obj.area());
+    }
+}
+<b><h3>Output:</h3></b>
+Radius : 7.0
+Perimeter of Circle : 43.960003
+Area of Circle : 153.86
+New Radius : 14.0
+New Perimeter of Circle : 87.920006
+New Area of Circle : 615.44
+</pre>
+
+
+</body>
+
+</html>

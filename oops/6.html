@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class Employee {
+    private String name;
+    private String jobTitle;
+    private double salary;
+    public Employee(String name, String jobTitle, double salary) {
+    this.name = name;
+    this.jobTitle = jobTitle;
+    this.salary = salary;
+}
+
+// Method to display employee details
+public void displayEmployeeDetails() {
+    System.out.println("Employee Name: " + name);
+    System.out.println("Job Title: " + jobTitle);
+    System.out.println("Current Salary: Rs " + salary);
+}
+
+// Method to calculate salary after increment
+public double calculateSalary(double percentageIncrease) {
+    return salary + (salary * percentageIncrease / 100);
+}
+
+// Method to update salary
+public void updateSalary(double newSalary) {
+    this.salary = newSalary;
+    System.out.println("Salary updated successfully!");
+}
+
+// Main method for testing
+public static void main(String[] args) {
+    // Create an Employee object
+    Employee emp = new Employee("Misbah", "Software Engineer", 60000);
+
+    // Display employee details
+    emp.displayEmployeeDetails();
+
+    // Calculate new salary with a 10% increase
+    double newSalary = emp.calculateSalary(10);
+    System.out.println("New Salary after 10% increment: Rs" + newSalary);
+
+    // Update the salary
+    emp.updateSalary(newSalary);
+
+    // Display updated employee details
+    emp.displayEmployeeDetails();
+    }
+}
+<b><h3>Output:</h3></b>
+Employee Name: Misbah
+Job Title: Software Engineer
+Current Salary: Rs 60000.0
+New Salary after 10% increment: Rs66000.0
+Salary updated successfully!
+Employee Name: Misbah
+Job Title: Software Engineer
+Current Salary: Rs 66000.0
+</pre>
+
+
+</body>
+
+</html>

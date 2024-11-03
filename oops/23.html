@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+        
+class Student {
+private int rollNo;
+private String name;
+private String studentClass;
+        
+public Student(int rollNo, String name, String studentClass) {
+    this.rollNo = rollNo;
+    this.name = name;
+    this.studentClass = studentClass;
+}
+        
+public int getRollNo() {
+    return rollNo;
+}
+        
+public String getName() {
+    return name;
+}
+        
+public String getStudentClass() {
+    return studentClass;
+}
+        
+@Override
+public String toString() {
+    return "Roll No: " + rollNo + ", Name: " + name + ", Class: " + studentClass;
+}
+}
+        
+public class StudentApp {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+List students = new ArrayList&lt;>();
+        
+System.out.println("Enter details for 10 students:");
+        
+for (int i = 0; i &lt; 10; i++) {
+    System.out.print("Enter name of student " + (i + 1) + ": ");
+    String name = scanner.nextLine();
+        
+    System.out.print("Enter class of student " + (i + 1) + ": ");
+    String studentClass = scanner.nextLine();
+        
+    // Automatically generate roll number (starting from 1)
+    int rollNo = i + 1;
+        
+    // Create a new Student object
+    Student student = new Student(rollNo, name, studentClass);
+    students.add(student);
+}
+        
+// Display all students
+System.out.println("Student Details:");
+    for (Student student : students) {
+    System.out.println(student);
+    }
+    scanner.close();
+}
+}
+<b><h3>Output:</h3></b>
+Enter details for 10 students:
+Enter name of student 1: Alice
+Enter class of student 1: 10A
+Enter name of student 2: Bob
+Enter class of student 2: 10B
+Enter name of student 3: Charlie
+Enter class of student 3: 10C
+Enter name of student 4: David
+Enter class of student 4: 10A
+Enter name of student 5: Eva
+Enter class of student 5: 10B
+Enter name of student 6: Frank
+Enter class of student 6: 10C
+Enter name of student 7: Grace
+Enter class of student 7: 10A
+Enter name of student 8: Harry
+Enter class of student 8: 10B
+Enter name of student 9: Ivy
+Enter class of student 9: 10C
+Enter name of student 10: Jack
+Enter class of student 10: 10A
+
+Student Details:
+Roll No: 1, Name: Alice, Class: 10A
+Roll No: 2, Name: Bob, Class: 10B
+Roll No: 3, Name: Charlie, Class: 10C
+Roll No: 4, Name: David, Class: 10A
+Roll No: 5, Name: Eva, Class: 10B
+Roll No: 6, Name: Frank, Class: 10C
+Roll No: 7, Name: Grace, Class: 10A
+Roll No: 8, Name: Harry, Class: 10B
+Roll No: 9, Name: Ivy, Class: 10C
+Roll No: 10, Name: Jack, Class: 10A
+</pre>
+
+
+</body>
+
+</html>

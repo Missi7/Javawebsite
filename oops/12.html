@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+        import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+class Airplane {
+    private String flightNumber;
+    private String destination;
+    private LocalTime departureTime;
+    private boolean delayed;
+    private LocalTime delayedTime;
+
+    // Constructor to initialize the flight details
+    public Airplane(String flightNumber, String destination, String departureTime) {
+        this.flightNumber = flightNumber;
+        this.destination = destination;
+        this.departureTime = LocalTime.parse(departureTime, DateTimeFormatter.ofPattern("HH:mm"));
+        this.delayed = false;
+        this.delayedTime = this.departureTime;
+    }
+
+    // Method to set a delay in minutes
+    public void delayFlight(int delayMinutes) {
+        delayed = true;
+        delayedTime = departureTime.plusMinutes(delayMinutes);
+        System.out.println("Flight " + flightNumber + " delayed by " + delayMinutes + " minutes.");
+    }
+
+    // Method to check the flight status
+    public void checkFlightStatus() {
+        LocalTime currentTime = LocalTime.now();
+        System.out.println("Flight Number: " + flightNumber);
+        System.out.println("Destination: " + destination);
+        System.out.println("Scheduled Departure Time: " + departureTime.format(DateTimeFormatter.ofPattern("HH:mm")));
+        if (delayed) {
+            System.out.println("Delayed Departure Time: " + delayedTime.format(DateTimeFormatter.ofPattern("HH:mm")));
+        }
+        System.out.println("Flight Status: " + (currentTime.isBefore(delayedTime) ? "Scheduled" : "Departed"));
+    }
+}
+
+public class AirplaneManagement {
+    public static void main(String[] args) {
+        // Creating a new flight
+        Airplane flight = new Airplane("AI101", "New York", "15:30");
+
+        // Checking initial flight status
+        flight.checkFlightStatus();
+
+        // Setting a delay of 45 minutes
+        flight.delayFlight(45);
+
+        // Checking the status again after delay
+        flight.checkFlightStatus();
+    }
+}
+<b><h3>Output:</h3></b>
+Flight Number: AI101
+Destination: New York
+Scheduled Departure Time: 15:30
+Flight Status: Scheduled
+Flight AI101 delayed by 45 minutes.
+Flight Number: AI101
+Destination: New York
+Scheduled Departure Time: 15:30
+Delayed Departure Time: 16:15
+Flight Status: Scheduled
+</pre>
+
+
+</body>
+
+</html>

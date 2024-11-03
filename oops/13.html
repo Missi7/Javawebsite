@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.util.HashMap;
+import java.util.Map;
+
+class Product {
+    private String name;
+    private int quantity;
+
+    public Product(String name, int quantity) {
+        this.name = name;
+        this.quantity = quantity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void addQuantity(int amount) {
+        quantity += amount;
+    }
+
+    public void removeQuantity(int amount) {
+        if (quantity >= amount) {
+            quantity -= amount;
+        } else {
+            System.out.println("Insufficient quantity for product: " + name);
+        }
+    }
+}
+
+class Inventory {
+    private Map products;
+
+    public Inventory() {
+        products = new HashMap&lt;>();
+    }
+
+    // Method to add a new product or increase quantity of an existing product
+    public void addProduct(String name, int quantity) {
+        if (products.containsKey(name)) {
+            products.get(name).addQuantity(quantity);
+            System.out.println("Added " + quantity + " more of " + name + " to inventory.");
+        } else {
+            products.put(name, new Product(name, quantity));
+            System.out.println("Product " + name + " added with quantity " + quantity);
+        }
+    }
+
+    // Method to remove quantity of a product
+    public void removeProduct(String name, int quantity) {
+        if (products.containsKey(name)) {
+            products.get(name).removeQuantity(quantity);
+            System.out.println("Removed " + quantity + " of " + name + " from inventory.");
+            if (products.get(name).getQuantity() == 0) {
+                products.remove(name);
+                System.out.println("Product " + name + " is now out of stock and removed from inventory.");
+            }
+        } else {
+            System.out.println("Product " + name + " not found in inventory.");
+        }
+    }
+
+    // Method to check for low inventory products
+    public void checkLowInventory(int threshold) {
+        System.out.println("Products with quantity below " + threshold + ":");
+        boolean lowInventoryFound = false;
+        for (Product product : products.values()) {
+            if (product.getQuantity() &lt; threshold) {
+                System.out.println("- " + product.getName() + ": " + product.getQuantity());
+                lowInventoryFound = true;
+            }
+        }
+        if (!lowInventoryFound) {
+            System.out.println("No products with low inventory.");
+        }
+    }
+
+    // Method to display all products and their quantities
+    public void displayInventory() {
+        System.out.println("Current Inventory:");
+        for (Product product : products.values()) {
+            System.out.println("- " + product.getName() + ": " + product.getQuantity());
+        }
+    }
+}
+
+public class InventoryManagement {
+    public static void main(String[] args) {
+        Inventory inventory = new Inventory();
+
+        // Adding products to the inventory
+        inventory.addProduct("Apples", 50);
+        inventory.addProduct("Bananas", 20);
+        inventory.addProduct("Oranges", 5);
+
+        // Displaying all products in the inventory
+        inventory.displayInventory();
+
+        // Removing products from the inventory
+        inventory.removeProduct("Bananas", 5);
+        inventory.removeProduct("Oranges", 5);
+
+        // Displaying inventory after removal
+        inventory.displayInventory();
+
+        // Checking for low inventory (threshold set to 10)
+        inventory.checkLowInventory(10);
+
+        // Adding more of an existing product
+        inventory.addProduct("Apples", 30);
+
+        // Displaying final inventory
+        inventory.displayInventory();
+    }
+}
+<b><h3>Output:</h3></b>
+Product Apples added with quantity 50
+Product Bananas added with quantity 20
+Product Oranges added with quantity 5
+Current Inventory:
+- Apples: 50
+- Bananas: 20
+- Oranges: 5
+Removed 5 of Bananas from inventory.
+Removed 5 of Oranges from inventory.
+Product Oranges is now out of stock and removed from inventory.
+Current Inventory:
+- Apples: 50
+- Bananas: 15
+Products with quantity below 10:
+- Bananas: 15
+Added 30 more of Apples to inventory.
+Current Inventory:
+- Apples: 80
+- Bananas: 15
+</pre>
+
+
+</body>
+
+</html>

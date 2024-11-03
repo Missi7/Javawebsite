@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class Person {
+    // Private instance variables
+    private String name;
+    private int age;
+    private String country;
+        
+    // Constructor
+    public Person(String name, int age, String country) {
+        this.name = name;
+        this.age = age;
+        this.country = country;
+    }
+        
+    // Getter for name
+    public String getName() {
+        return name;
+    }
+        
+    // Setter for name
+    public void setName(String name) {
+        this.name = name;
+    }
+        
+    // Getter for age
+    public int getAge() {
+        return age;
+    }
+        
+    // Setter for age
+    public void setAge(int age) {
+        if (age > 0) { // Validate age
+            this.age = age;
+        } else {
+            System.out.println("Age must be positive.");
+        }
+    }
+        
+    // Getter for country
+    public String getCountry() {
+        return country;
+    }
+        
+    // Setter for country
+    public void setCountry(String country) {
+        this.country = country;
+    }
+        
+    // Method to display person details
+    public void displayInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Country: " + country);
+    }
+}
+        
+public class PersonApp {
+    public static void main(String[] args) {
+        // Creating a Person object
+        Person person = new Person("Alice", 30, "USA");
+        
+        // Displaying initial details
+        System.out.println("Initial Person Details:");
+        person.displayInfo();
+        
+        // Modifying the person's details
+        person.setName("Bob");
+        person.setAge(25);
+        person.setCountry("Canada");
+        
+        // Displaying updated details
+        System.out.println("Updated Person Details:");
+        person.displayInfo();
+        
+        // Attempting to set an invalid age
+        person.setAge(-5); // Should print an error message
+    }
+}
+<b><h3>Output:</h3></b>
+Initial Person Details:
+Name: Alice
+Age: 30
+Country: USA
+
+Updated Person Details:
+Name: Bob
+Age: 25
+Country: Canada
+Age must be positive.
+</pre>
+
+
+</body>
+
+</html>
