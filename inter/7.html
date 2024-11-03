@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+interface Sortable {
+    void sort(int[] arr);
+}
+    
+class BubbleSort implements Sortable {
+public void sort(int[] arr) {
+    int n = arr.length;
+    for (int i = 0; i &lt; n - 1; i++) {
+        for (int j = 0; j &lt; n - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+            // Swap arr[j] and arr[j+1]
+            int temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+            }
+}
+}
+    System.out.println("Array sorted using Bubble Sort: " + Arrays.toString(arr));
+}
+}
+    
+class SelectionSort implements Sortable {
+    public void sort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i &lt; n - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j &lt; n; j++) {
+                if (arr[j] &lt; arr[minIndex]) {
+                    minIndex = j; // Find the minimum element
+                }
+            }
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+        System.out.println("Array sorted using Selection Sort: " + Arrays.toString(arr));
+    }
+}
+    
+public class Sorting {
+    public static void main(String[] args) {
+    int[] array1 = {64, 34, 25, 12, 22, 11, 90};
+    int[] array2 = {64, 34, 25, 12, 22, 11, 90};
+    
+    // Sorting using BubbleSort
+    Sortable bubbleSort = new BubbleSort();
+    bubbleSort.sort(array1);
+    
+    // Sorting using SelectionSort
+    Sortable selectionSort = new SelectionSort();
+    selectionSort.sort(array2);
+    }
+}
+<b><h3>Output:</h3></b>
+Array sorted using Bubble Sort: [11, 12, 22, 25, 34, 64, 90]
+Array sorted using Selection Sort: [11, 12, 22, 25, 34, 64, 90]
+
+</pre>
+
+
+</body>
+
+</html>

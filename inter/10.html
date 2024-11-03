@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+interface Encryptable {
+    String encrypt(String data);
+    String decrypt(String encryptedData);
+}
+    
+class AES implements Encryptable {
+    public String encrypt(String data) {
+        // Simulated AES encryption (reverse the string)
+        String encrypted = new StringBuilder(data).reverse().toString();
+        System.out.println("AES Encrypted Data: " + encrypted);
+        return encrypted;
+}
+  
+    public String decrypt(String encryptedData) {
+        // Simulated AES decryption (reverse the string back)
+        String decrypted = new StringBuilder(encryptedData).reverse().toString();
+        System.out.println("AES Decrypted Data: " + decrypted);
+        return decrypted;
+    }
+}
+    
+class RSA implements Encryptable {
+    public String encrypt(String data) {
+        // Simulated RSA encryption (shift each character by 3)
+        StringBuilder encrypted = new StringBuilder();
+        for (char c : data.toCharArray()) {
+            encrypted.append((char) (c + 3));
+        }
+        System.out.println("RSA Encrypted Data: " + encrypted.toString());
+        return encrypted.toString();
+}
+    
+public String decrypt(String encryptedData) {
+        // Simulated RSA decryption (shift each character back by 3)
+        StringBuilder decrypted = new StringBuilder();
+        for (char c : encryptedData.toCharArray()) {
+            decrypted.append((char) (c - 3));
+        }
+        System.out.println("RSA Decrypted Data: " + decrypted.toString());
+        return decrypted.toString();
+        }
+}
+    
+public class EncryptionDemo {
+    public static void main(String[] args) {
+        // Create instances of AES and RSA
+        Encryptable aesEncryption = new AES();
+        Encryptable rsaEncryption = new RSA();
+    
+        // Test AES encryption and decryption
+        String aesEncrypted = aesEncryption.encrypt("HelloAES");
+        aesEncryption.decrypt(aesEncrypted);
+    
+        // Test RSA encryption and decryption
+        String rsaEncrypted = rsaEncryption.encrypt("HelloRSA");
+        rsaEncryption.decrypt(rsaEncrypted);
+    }
+}
+<b><h3>Output:</h3></b>
+AES Encrypted Data: SEAolleH
+AES Decrypted Data: HelloAES
+RSA Encrypted Data: KhoorUVD
+RSA Decrypted Data: HelloRSA
+</pre>
+
+
+</body>
+
+</html>

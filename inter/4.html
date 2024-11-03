@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+        
+interface Account {
+    void deposit(double amount);
+    void withdraw(double amount);
+    void calculateInterest();
+    void viewBalance();
+}
+        
+class Bank {
+    private List accounts;
+        
+    public Bank() {
+        accounts = new ArrayList&lt;>();
+    }
+        
+    public void addAccount(Account account) {
+        accounts.add(account);
+    }
+        
+    public void displayAccounts() {
+        System.out.println("Bank Accounts:");
+        for (Account account : accounts) {
+            account.viewBalance();
+        }
+    }
+}
+        
+class SavingsAccount implements Account {
+private double balance;
+private double interestRate;
+        
+public SavingsAccount(double initialDeposit, double interestRate) {
+    this.balance = initialDeposit;
+    this.interestRate = interestRate;
+}
+public void deposit(double amount) {
+    balance += amount;
+    System.out.println("Deposited " + amount + " to SavingsAccount. New balance: " + balance);
+}
+        
+public void withdraw(double amount) {
+    if (balance >= amount) {
+    balance -= amount;
+    System.out.println("Withdrew " + amount + " from SavingsAccount. New balance: " + balance);
+    } else {
+    System.out.println("Insufficient balance in SavingsAccount.");
+    }
+}
+        
+public void calculateInterest() {
+        double interest = balance * (interestRate / 100);
+        balance += interest;
+        System.out.println("Interest added to SavingsAccount. New balance: " + balance);
+    }
+        
+    public void viewBalance() {
+        System.out.println("SavingsAccount Balance: " + balance);
+    }
+}
+        
+class CurrentAccount implements Account {
+private double balance;
+private double overdraftLimit;
+        
+public CurrentAccount(double initialDeposit, double overdraftLimit) {
+    this.balance = initialDeposit;
+    this.overdraftLimit = overdraftLimit;
+}
+public void deposit(double amount) {
+    balance += amount;
+    System.out.println("Deposited " + amount + " to CurrentAccount. New balance: " + balance);
+}
+        
+public void withdraw(double amount) {
+    if (balance + overdraftLimit >= amount) {
+        balance -= amount;
+        System.out.println("Withdrew " + amount + " from CurrentAccount. New balance: " + balance);
+    } else {
+        System.out.println("Overdraft limit exceeded in CurrentAccount.");
+    }
+}
+        
+public void calculateInterest() {
+    System.out.println("No interest for CurrentAccount.");
+}
+        
+public void viewBalance() {
+    System.out.println("CurrentAccount Balance: " + balance);
+}
+}
+        
+public class BankingSystem {
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+                
+    Bank bank = new Bank();
+                
+    SavingsAccount savingsAccount = new SavingsAccount(1000.0, 5.0); //Initial deposit 1000, interest rate 5%
+    bank.addAccount(savingsAccount);
+                
+    CurrentAccount currentAccount = new CurrentAccount(500.0, 200.0);//Initial deposit 500,overdraft limit200
+    bank.addAccount(currentAccount);
+        
+    savingsAccount.deposit(200);
+    savingsAccount.calculateInterest();
+    savingsAccount.withdraw(300);
+                
+    currentAccount.deposit(150);
+    currentAccount.withdraw(600);
+                
+    bank.displayAccounts();
+                
+    scanner.close();
+    }
+}
+<b><h3>Output:</h3></b>
+Deposited 200.0 to SavingsAccount. New balance: 1200.0
+Interest added to SavingsAccount. New balance: 1260.0
+Withdrew 300.0 from SavingsAccount. New balance: 960.0
+Deposited 150.0 to CurrentAccount. New balance: 650.0
+Withdrew 600.0 from CurrentAccount. New balance: 50.0
+Bank Accounts:
+SavingsAccount Balance: 960.0
+CurrentAccount Balance: 50.0
+</pre>
+
+
+</body>
+
+</html>
