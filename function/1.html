@@ -29,16 +29,37 @@
 
 <body>
     <pre>
-// Write a Java Program to print 'Hello World!' on screen
+//Write a Java method to find the smallest number among three
 
-    class Main{
-            public static void main(String x[]){
-            System.out.println("Hello World!");
+ class A
+    {
+     public static void main(String args[])
+        {
+        int a =10;
+        int b =20;
+        int c =30;	
+            
+        int smallest = findSmallest(a,b,c);
+        System.out.println("Smallest number:"+smallest);
         }
-    }
-
+        public static int findSmallest(int a,int b ,int c)
+        {
+            if(a<=b && a<=c)
+            {
+                return a;
+            }
+            else if(b<=a && b<=c)
+            {
+                 return b;
+            }
+            else 
+            {
+                return c;
+            }
+        }
+}
 <b><h3>Output:</h3></b>
-Hello World!
+Smallest number:10
 </pre>
 
 

@@ -29,26 +29,26 @@
 
 <body>
     <pre>
-//Write a Java program to compare two numbers
-
-    class CompareNum{
-        public static void main(String st[]){
-            int num1 = 10;
-            int num2 = 20;
-            if(num1>num2){
-                System.out.println(num1 + " is greater than "+num2);
-            }
-            else if(num1 &lt; num2){
-                System.out.println(num1 + " is less than "+num2);
-            }
-            else{
-                System.out.println(num1 + " is equal to "+num2);
-            }
-        }
+public class ThreeInt {
+boolean consecutive(int a,int b,int c)
+{
+    if (++a==b && ++b==c) {
+        return true;
     }
-
+    else
+    {
+        return false;
+    }
+                
+}
+public static void main(String[] args) {
+    int num1=2,num2=3,num3=4;
+    boolean cons = new ThreeInt().consecutive(num1, num2, num3);
+    System.out.println(cons);
+    }
+}
 <b><h3>Output:</h3></b>
-10 is less than 20
+true
 </pre>
 
 

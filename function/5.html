@@ -29,36 +29,23 @@
 
 <body>
     <pre>
-// Write a Java program that takes five numbers as input to calculate and print the average of the numbers
-
-class Average{
-        public static void main(String st[])
-    {
-            java.io.InputStreamReader isr = new java.io.InputStreamReader(System.in);
-            java.io.BufferedReader br = new java.io.BufferedReader(isr);
-            double sum = 0;
-        try{
-            System.out.println("Enter five numbers : ");
-            for(int i = 0; i<5;i++){
-                System.out.print("number "+(i+1)+ ": ");
-                sum += Double.parseDouble(br.readLine());
-                
-            }
-            double average = sum / 5;
-            System.out.println("Average : "+average);
-        }
-        catch(Throwable ex){
-            System.out.println("invalid input : "+ex.getMessage());
-        }
-        }
+class Main{
+static double getFutureValue(double amt, double roi, int time){
+    double fv = amt*Math.pow((1+(roi/100)), time);
+    return fv;
 }
+public static void main(String[] args){
+System.out.println("Amount = 10000");
+System.out.println("Rate of Interest = 10");
+System.out.println("Years = 5");
+System.out.printf("Your Future Value is %.2f" , getFutureValue(10000.0, 10.0, 5));
+    }
+}        
 <b><h3>Output:</h3></b>
-number 1: 2
-number 2: 3
-number 3: 5
-number 4: 8
-number 5: 9
-Average : 5.4
+Amount = 10000
+Rate of Interest = 10
+Years = 5
+Your Future Value is 16105.10
 </pre>
 
 

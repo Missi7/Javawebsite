@@ -29,27 +29,32 @@
 
 <body>
     <pre>
-//Write a Java program to print the ascii value of a given character.
+//13. Write a Java method that checks whether all the characters in a given string are vowels (a, e,i,o,u) or not. Return true if each character in the string is a vowel, otherwise return false.
 
-    class Main{
+    class CheckVowel{
         public static void main(String st[]){
-            java.io.InputStreamReader isr = new java.io.InputStreamReader(System.in);
-            java.io.BufferedReader reader = new java.io.BufferedReader(isr);
-        try{
-            System.out.print("Enter a character : ");
-            char c = (char)reader.read();
-            int ascii = c;
-            System.out.println("The ASCII value of "+c+ " is "+ascii);
+            System.out.println(IfVowel("abcd"));
+            System.out.println(IfVowel("aeiou"));
+            System.out.println(IfVowel("AEIOU"));
+    
+    
         }
-        catch(Throwable ex){
-            System.out.println(ex.getMessage());
-        }
+        
+        static boolean IfVowel(String str){
+            for(int i = 0; i < str.length(); i++){
+                char c = str.charAt(i);
+                if((c!='a' && c!= 'e'&& c!='i' && c!= 'o' && c!='u' && c!='A' && c!= 'E'&& c!='I' && c!= 'O' && c!='U')){
+                    return false;
+                }
+            }
+            return true;
+    
         }
     }
-
 <b><h3>Output:</h3></b>
-Enter a character : e
-The ASCII value of e is 101
+false
+true
+true
 </pre>
 
 
