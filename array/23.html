@@ -29,30 +29,18 @@
 
 <body>
     <pre>
-// Program to copy all elements of one array into another array
-
- class Main{
-     public static void main(String st[]){
-         int array1[] = {1,2,3,4,5};
-         int array2[] = new int[array1.length];
-
-         for(int i = 0; i&lt;array1.length; i++){
-             array2[i] = array1[i];
-         }
-        System.out.println("copied array :");
-         for(int i=0; i&lt;array2.length; i++){
-             int element = array2[i];
-             System.out.println(element + " ");
-         }
-     }
- }
+import java.util.Arrays;
+public class SortArray {
+    public static void main(String[] args) {
+    int[] arr = {5, 1, 3, 9, 7};
+    Arrays.sort(arr);
+    for (int i = 0; i &lt; arr.length; i++) {
+        System.out.print(arr[i] + " ");
+    }
+    }
+}   
 <b><h3>Output:</h3></b>
-copied array :
-1
-2
-3
-4
-5
+1 3 5 7 9
 </pre>
 
 

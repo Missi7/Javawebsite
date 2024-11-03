@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class LeftRotate {
+    public static void main(String[] args) {
+    int[] array = {1, 2, 3, 4, 5};
+    int rotations = 2;
+    
+    System.out.println("Original array:");
+    for (int num : array) {
+        System.out.print(num + " ");
+    }
+    System.out.println();
+    
+    // Left rotate
+    for (int i = 0; i &lt; rotations; i++) {
+        int temp = array[0];
+        for (int j = 0; j &lt; array.length - 1; j++) {
+            array[j] = array[j + 1];
+        }
+        array[array.length - 1] = temp;
+    }
+    
+    System.out.println("Rotated array:");
+    for (int num : array) {
+        System.out.print(num + " ");
+    }
+        System.out.println();
+    }
+}
+<b><h3>Output:</h3></b>
+Original array:
+1 2 3 4 5
+Rotated array:
+3 4 5 1 2
+</pre>
+
+
+</body>
+
+</html>

@@ -29,30 +29,22 @@
 
 <body>
     <pre>
-// Program to copy all elements of one array into another array
-
- class Main{
-     public static void main(String st[]){
-         int array1[] = {1,2,3,4,5};
-         int array2[] = new int[array1.length];
-
-         for(int i = 0; i&lt;array1.length; i++){
-             array2[i] = array1[i];
-         }
-        System.out.println("copied array :");
-         for(int i=0; i&lt;array2.length; i++){
-             int element = array2[i];
-             System.out.println(element + " ");
-         }
-     }
- }
+public class RightRotateArray {
+    public static void main(String[] args) {
+            int[] arr = {1, 2, 3, 4, 5};
+            int n = arr.length;
+            int last = arr[n-1];
+            for (int i = n-1; i > 0; i--) {
+                arr[i] = arr[i-1];
+            }
+            arr[0] = last;
+            for (int i = 0; i &lt; n; i++) {
+                System.out.print(arr[i] + " ");
+            }
+        }
+    }
 <b><h3>Output:</h3></b>
-copied array :
-1
-2
-3
-4
-5
+5 1 2 3 4
 </pre>
 
 
