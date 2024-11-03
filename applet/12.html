@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class RoundedRect extends Applet {
+
+    public void paint(Graphics g) {
+        g.drawRoundRect(50, 50, 200, 100, 30, 30);  
+}
+}
+/*
+<applet code = "RoundedRect.class" width = "300" height= "300"></applet>
+*/
+<!-- <b><h3>Output:</h3></b> -->
+
+</pre>
+
+
+</body>
+
+</html>
