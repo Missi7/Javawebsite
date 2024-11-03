@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+public class MidChar {
+    static void midChar(String s)
+    {
+    if ((s.length()%2)==0) {
+    int mid1 = ((s.length())/2)-1;
+    int mid2 = (s.length()/2);
+    System.out.println(s.charAt(mid1));
+    System.out.println(s.charAt(mid2));
+    }
+    else
+    {
+    int mid = ((s.length())/2);
+    System.out.println(s.charAt(mid));
+    }
+}
+public static void main(String[] args) {
+    String str = "Misbah";
+    midChar(str);
+    }
+}
+<b><h3>Output:</h3></b>
+s
+b
+</pre>
+</body>
+
+</html>
