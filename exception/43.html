@@ -29,26 +29,32 @@
 
 <body>
     <pre>
-//Write a Java program to compare two numbers
-
-    class CompareNum{
-        public static void main(String st[]){
-            int num1 = 10;
-            int num2 = 20;
-            if(num1>num2){
-                System.out.println(num1 + " is greater than "+num2);
+//Java program to sum of N numbers
+    class SumOfNNumbers {
+        public static void main(String[] args) {
+            java.util.Scanner scanner = new java.util.Scanner(System.in);
+    
+            System.out.print("Enter the value of n:");
+            int n = scanner.nextInt();
+            int sum = 0;
+            int i = 0;
+    
+            System.out.println("Enter " + n + " numbers:");
+            while (i &lt; n) {
+                sum += scanner.nextInt();
+                i++;
             }
-            else if(num1 &lt; num2){
-                System.out.println(num1 + " is less than "+num2);
-            }
-            else{
-                System.out.println(num1 + " is equal to "+num2);
-            }
+    
+            System.out.println("Sum: " + sum);
         }
     }
-
 <b><h3>Output:</h3></b>
-10 is less than 20
+Enter the value of n:3
+Enter 3 numbers:
+1
+2
+3
+Sum: 6
 </pre>
 
 

@@ -29,65 +29,37 @@
 
 <body>
     <pre>
-class NumberAreDuplicate extends Throwable
-{
-    public String getMessage()
-    {
-        return "Number are Duplicate";
+ //Write a Java program to swap two variables.
+    class Swap{
+        int num1, num2;
+        Swap(int n1, int n2){
+            num1 = n1;
+            num2 = n2;
+            System.out.println("value of num1 = "+num1);
+            System.out.println("value of num2 = "+num2);
+        }
+    
+        void display(){
+            int temp = num1;
+        num1 = num2;
+        num2 = temp;
+            System.out.println("value of num1 after swapping = "+num1);
+            System.out.println("value of num2 after swapping = "+num2);
+        }
     }
-}
-class Exception6
-{
-    public static void main(String st[])
-{
-int arr[]=new int[5];
-int i,j;
-boolean isDuplicate = true;
-try
-{
-java.io.BufferedReader input = new java.io.BufferedReader
-                        (new java.io.InputStreamReader(System.in));
-arr[0]=Integer.parseInt(input.readLine());
-for(i=1;i&lt;arr.length;i++)
-{
-    for(j=i-1;j&lt;i;j++)
-    {
-    arr[i]=Integer.parseInt(input.readLine());
-    if(arr[i]==arr[j])
-    {
-        throw new NumberAreDuplicate();
+    
+    class Main{
+        public static void main(String args[]){
+            Swap swap = new Swap(10,20);
+            swap.display();
+        }
     }
-    else
-    {
-        isDuplicate=false;
-    }
-    }
-}
-if(!isDuplicate)
-{
-    System.out.println("Number are not Duplicate");
-}
-}
-catch(java.io.IOException e)
-{
-    System.out.println(e.getMessage());
-}
-    catch(NumberFormatException e)
-{
-    System.out.println(e.getMessage());
-}
-catch(NumberAreDuplicate e)
-{
-        System.out.println(e.getMessage());
-    }
-}
-}
+
 <b><h3>Output:</h3></b>
-1
-2
-3
-3
-Number are Duplicate
+value of num1 = 10
+value of num2 = 20
+value of num1 after swapping = 20
+value of num2 after swapping = 10
 </pre>
 
 

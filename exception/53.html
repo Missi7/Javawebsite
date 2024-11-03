@@ -29,26 +29,24 @@
 
 <body>
     <pre>
-//Write a Java program to compare two numbers
+//Write a Java program to find the number of days in a month
 
-    class CompareNum{
-        public static void main(String st[]){
-            int num1 = 10;
-            int num2 = 20;
-            if(num1>num2){
-                System.out.println(num1 + " is greater than "+num2);
-            }
-            else if(num1 &lt; num2){
-                System.out.println(num1 + " is less than "+num2);
-            }
-            else{
-                System.out.println(num1 + " is equal to "+num2);
-            }
+    class Main {
+        public static void main(String st[]) {
+            java.util.Scanner scanner = new java.util.Scanner(System.in);
+            System.out.print("Enter Month : ");
+            int month = scanner.nextInt();
+            System.out.print("Enter Year : ");
+            int year = scanner.nextInt();
+            java.time.LocalDate date = java.time.LocalDate.of(year, month, 1);
+            int days = date.lengthOfMonth();
+            System.out.println("Number of days : " + days);
         }
     }
-
 <b><h3>Output:</h3></b>
-10 is less than 20
+Enter Month : 3
+Enter Year : 2024
+Number of days : 31
 </pre>
 
 

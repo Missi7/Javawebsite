@@ -29,27 +29,26 @@
 
 <body>
     <pre>
-//Write a Java program to print the ascii value of a given character.
-
-    class Main{
-        public static void main(String st[]){
-            java.io.InputStreamReader isr = new java.io.InputStreamReader(System.in);
-            java.io.BufferedReader reader = new java.io.BufferedReader(isr);
-        try{
-            System.out.print("Enter a character : ");
-            char c = (char)reader.read();
-            int ascii = c;
-            System.out.println("The ASCII value of "+c+ " is "+ascii);
+//Java program to find area of circle
+    class AreaOfCircle{
+        double radius;
+        double area;
+        AreaOfCircle(int r){
+            radius = r;
         }
-        catch(Throwable ex){
-            System.out.println(ex.getMessage());
-        }
+        double areaOfCircle(){
+            return 3.14*radius*radius;
         }
     }
-
+    
+    class Main{
+        public static void main(String st[]){
+            AreaOfCircle circle = new AreaOfCircle(5);
+            System.out.println("Area of Circle : "+circle.areaOfCircle());
+        }
+    }
 <b><h3>Output:</h3></b>
-Enter a character : e
-The ASCII value of e is 101
+Area of Circle : 78.5
 </pre>
 
 

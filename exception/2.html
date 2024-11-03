@@ -29,34 +29,22 @@
 
 <body>
     <pre>
-//2. Write a Java program to create a method that takes an integer as a parameter
-and throws an exception if the number is odd.
-
-class OddNumberException extends Throwable{
-	public String getMessage(){
-		return "Number is odd..";
-	}
-}
-
+// Write a Java program to print the sum of two numbers
+    
 class Main{
-	static void checkDigit(int x) throws OddNumberException {
-		
-		if(x % 2 != 0){
-			throw new OddNumberException();
-		}			
-	}
-public static void main(String st[]){
-	
-	try{
-	checkDigit(9);
-	}
-	catch(OddNumberException ex){
-		System.out.println(ex.getMessage());
-	}
-}
+    public static void main(String x[]){
+    int num1 = 10, num2 = 20, sum;
+        
+    System.out.println("Value of Num1 = "+num1);
+    System.out.println("Value of Num2 = "+num2);
+        sum = num1 + num2;
+    System.out.println("The sum of "+num1+" and "+num2+" = "+sum);
+    }
 }
 <b><h3>Output:</h3></b>
-Number is odd..
+Value of Num1 = 10
+Value of Num2 = 20
+The sum of 10 and 20 = 30
 </pre>
 
 

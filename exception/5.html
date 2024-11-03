@@ -29,43 +29,36 @@
 
 <body>
     <pre>
-class FileIsEmpty extends Throwable
-{
-    public String getMessage()
+// Write a Java program that takes five numbers as input to calculate and print the average of the numbers
+
+class Average{
+        public static void main(String st[])
     {
-    return "File is Empty!";
-    }
+            java.io.InputStreamReader isr = new java.io.InputStreamReader(System.in);
+            java.io.BufferedReader br = new java.io.BufferedReader(isr);
+            double sum = 0;
+        try{
+            System.out.println("Enter five numbers : ");
+            for(int i = 0; i<5;i++){
+                System.out.print("number "+(i+1)+ ": ");
+                sum += Double.parseDouble(br.readLine());
+                
+            }
+            double average = sum / 5;
+            System.out.println("Average : "+average);
+        }
+        catch(Throwable ex){
+            System.out.println("invalid input : "+ex.getMessage());
+        }
+        }
 }
-class Exception5
-{
-    public static void main(String st[])
-{
-    try
-    {
-    java.io.File file = new java.io.File("text.txt");
-    java.util.Scanner input = new java.util.Scanner(file);
-    if(!input.hasNextLine())
-    {
-        throw new FileIsEmpty();
-    }
-    else
-    {
-        System.out.println("File is not Empty");
-    }
-    }
-    catch (FileIsEmpty e)
-    {
-        System.out.println(e.getMessage()); 
-    }
-    catch(java.io.FileNotFoundException e)
-    {
-        System.out.println(e.getMessage());
-    }
-}   }
-
 <b><h3>Output:</h3></b>
-File is not Empty
-
+number 1: 2
+number 2: 3
+number 3: 5
+number 4: 8
+number 5: 9
+Average : 5.4
 </pre>
 
 

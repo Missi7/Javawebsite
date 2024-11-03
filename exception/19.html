@@ -29,27 +29,29 @@
 
 <body>
     <pre>
-//Write a Java program to print the ascii value of a given character.
-
+//Write a Java program to convert seconds to hour, minute and seconds
     class Main{
         public static void main(String st[]){
-            java.io.InputStreamReader isr = new java.io.InputStreamReader(System.in);
-            java.io.BufferedReader reader = new java.io.BufferedReader(isr);
-        try{
-            System.out.print("Enter a character : ");
-            char c = (char)reader.read();
-            int ascii = c;
-            System.out.println("The ASCII value of "+c+ " is "+ascii);
-        }
-        catch(Throwable ex){
-            System.out.println(ex.getMessage());
-        }
+            java.util.Scanner scanner = new java.util.Scanner(System.in);
+            System.out.print("Enter Seconds : ");
+            int seconds = scanner.nextInt();
+            
+            int hours = seconds / 3600;
+            int minutes = (seconds % 3600)/60;
+            int sec = seconds % 60;
+    
+            System.out.println(seconds + " seconds is equal to");
+            System.out.println(hours + " hours");
+            System.out.println(minutes + " minutes");
+            System.out.println(sec +" sec");
         }
     }
-
 <b><h3>Output:</h3></b>
-Enter a character : e
-The ASCII value of e is 101
+Enter Seconds : 7894
+7894 seconds is equal to
+2 hours
+11 minutes
+34 sec
 </pre>
 
 

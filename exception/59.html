@@ -29,26 +29,26 @@
 
 <body>
     <pre>
-//Write a Java program to compare two numbers
+// Write a java program to check vowel or consonant
 
-    class CompareNum{
-        public static void main(String st[]){
-            int num1 = 10;
-            int num2 = 20;
-            if(num1>num2){
-                System.out.println(num1 + " is greater than "+num2);
-            }
-            else if(num1 &lt; num2){
-                System.out.println(num1 + " is less than "+num2);
-            }
-            else{
-                System.out.println(num1 + " is equal to "+num2);
-            }
+    class CheckVowel
+        {
+        public static void main(String st[])
+        {
+        char ch = 'A';
+        if(ch=='a' || ch=='o' || ch=='i' || ch=='e' || ch=='u' || ch=='A' || ch=='E' || ch=='I' || ch == 'O' || ch=='U')
+        {
+        System.out.println(ch+" is Vowel ");
         }
-    }
+        else 
+        {
+        System.out.println(ch+" is Consonant");
+        }
+        }
+        }
 
 <b><h3>Output:</h3></b>
-10 is less than 20
+A is Vowel
 </pre>
 
 
