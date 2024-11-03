@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class Exception12
+{
+public static void main(String st[])
+{
+    try
+    {
+        System.out.println(Integer.parseInt(st[0]));
+    }
+    catch(ArrayIndexOutOfBoundsException e)
+    {
+        System.out.println("Please Enter at least one Argument!");
+    }
+    catch(NumberFormatException e)
+    {
+        System.out.println("Please Enter an Integer value!");
+    }
+    }
+}
+<b><h3>Output:</h3></b>
+Please Enter at least one Argument!
+</pre>
+
+
+</body>
+
+</html>
