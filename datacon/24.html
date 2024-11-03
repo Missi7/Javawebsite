@@ -29,16 +29,19 @@
 
 <body>
     <pre>
-// How to convert Hex to Decimal
-public class HexToDecimal {
+// How to convert Timestamp to Date
+import java.sql.Timestamp;
+import java.util.Date;
+        
+public class TimestampToDate {
     public static void main(String[] args) {
-        String hexStr = "A"; // Example hex number
-        int decimal = Integer.parseInt(hexStr, 16);
-        System.out.println(decimal);
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        Date date = new Date(timestamp.getTime());
+        System.out.println(date);
     }
 }           
 <b><h3>Output:</h3></b>
-10
+Sun Oct 20 00:00:00 IST 2024
 </pre>
 
 

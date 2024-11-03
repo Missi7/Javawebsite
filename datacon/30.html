@@ -29,16 +29,16 @@
 
 <body>
     <pre>
-// How to convert Hex to Decimal
-public class HexToDecimal {
+// How to convert Decimal to Octal
+public class DecimalToOctal {
     public static void main(String[] args) {
-        String hexStr = "A"; // Example hex number
-        int decimal = Integer.parseInt(hexStr, 16);
-        System.out.println(decimal);
-    }
-}           
+        int decimal = 10; // Example decimal number
+        String octal = Integer.toOctalString(decimal);
+        System.out.println(octal);
+}
+}    
 <b><h3>Output:</h3></b>
-10
+12
 </pre>
 
 

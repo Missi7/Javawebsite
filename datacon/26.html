@@ -29,22 +29,16 @@
 
 <body>
     <pre>
-//Write a Java program to add all the digits of a given positive integer
-
-    class AddDigits{
-        public static void main(String st[]){
-            int num = 345;
-            int sum=0;
-            while(num != 0){
-                sum += num % 10;
-                num /= 10;
-            }
-            
-            System.out.println("Sum of digits : "+ sum);	
-        }
+// How to convert Decimal to Binary
+public class DecimalToBinary {
+    public static void main(String[] args) {
+        int decimal = 10; // Example decimal number
+        String binary = Integer.toBinaryString(decimal);
+        System.out.println(binary);
     }
+}           
 <b><h3>Output:</h3></b>
-Sum of digits : 12
+1010
 </pre>
 
 

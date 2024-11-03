@@ -29,29 +29,16 @@
 
 <body>
     <pre>
-// Java Program to find area of triangle
-
-    class AreaOfTriangle{
-        double base; 
-        double height;
-        AreaOfTriangle(double b, double h){
-            base = b;
-            height = h;
-        }
-        double areaOfTriangle(){
-            return 0.5*base*height;
-        }
+// How to convert Octal to Decimal
+public class OctalToDecimal {
+    public static void main(String[] args) {
+        String octalStr = "12"; // Example octal number
+        int decimal = Integer.parseInt(octalStr, 8);
+        System.out.println(decimal);
     }
-    
-    class Main{
-        public static void main(String st[]){
-        AreaOfTriangle triangle = new AreaOfTriangle(3,6);
-        System.out.println("Area of triangle : "+triangle.areaOfTriangle());
-        }
-    }
-
+}       
 <b><h3>Output:</h3></b>
-Area of triangle : 9.0
+10
 </pre>
 
 

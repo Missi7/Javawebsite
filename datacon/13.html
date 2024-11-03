@@ -29,27 +29,16 @@
 
 <body>
     <pre>
-//Write a Java program to print the ascii value of a given character.
-
-    class Main{
-        public static void main(String st[]){
-            java.io.InputStreamReader isr = new java.io.InputStreamReader(System.in);
-            java.io.BufferedReader reader = new java.io.BufferedReader(isr);
-        try{
-            System.out.print("Enter a character : ");
-            char c = (char)reader.read();
-            int ascii = c;
-            System.out.println("The ASCII value of "+c+ " is "+ascii);
-        }
-        catch(Throwable ex){
-            System.out.println(ex.getMessage());
-        }
-        }
+// How to convert String to Object
+public class StringToObject {
+    public static void main(String[] args) {
+        String str = "Hello, World!";
+        Object obj = str; // Implicit conversion
+        System.out.println(obj);
     }
-
+}    
 <b><h3>Output:</h3></b>
-Enter a character : e
-The ASCII value of e is 101
+Hello, World!
 </pre>
 
 
