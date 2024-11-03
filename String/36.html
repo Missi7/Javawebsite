@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class Main{
+static boolean isPallindrome(String str){
+    for(int i = 0, j = (str.length()-1); i &lt; j; i++, j--){
+        if(str.charAt(i) != str.charAt(j)){
+                        return false;
+        }
+    }
+    return true;
+}
+        
+static void maxAndMinPallindrome(String str){
+    String maxword = "";
+    String minword = "";
+    String curword = "";
+        
+    for(int i = 0; i &lt; str.length(); i++){
+        curword = "";
+        while(i &lt; str.length() && str.charAt(i) != ' '){
+            curword += str.charAt(i);
+            i++;
+        }
+        
+        if((minword.length() > curword.length() || minword.length() == 0) && isPallindrome(curword)){
+            minword = curword;
+        }
+        if(curword.length() > maxword.length() && isPallindrome(curword)){
+            maxword = curword;
+        }
+                    
+    }
+        System.out.println("Given String : " + str);
+        if(maxword.length() == 0){
+            System.out.println("No Pallindrome word found");
+            return;
+        }
+        System.out.println("Largest Pallindrome Word in String : " + maxword);
+        System.out.println("Smallest Pallindrome Word in String : " + minword);
+        }
+        public static void main(String[] args){
+        maxAndMinPallindrome("abba mobile no 123454321");
+        maxAndMinPallindrome("Hello world");
+        }
+}
+<b><h3>Output:</h3></b>
+Given String : abba mobile no 123454321
+Largest Pallindrome Word in String : 123454321
+Smallest Pallindrome Word in String : abba
+Given String : Hello world
+No Pallindrome word found
+</pre>
+
+
+</body>
+
+</html>

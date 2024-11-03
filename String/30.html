@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+public class WordCount {
+public static void main(String[] args) {
+    String filePath = "sample.txt"; // Specify the path to your text file here
+    int wordCount = countWordsInFile(filePath);
+    System.out.println("Total number of words in the file: " + wordCount);
+}
+        
+public static int countWordsInFile(String filePath) {
+int wordCount = 0;
+        
+try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+    String line;
+    while ((line = reader.readLine()) != null) {
+        String[] words = line.trim().split("\s+"); // Split by whitespace
+        wordCount += words.length; // Add the number of words in this linethe total count
+    }
+} catch (IOException e) {
+System.out.println("An error occurred while reading the file: "getMessage());
+}
+return wordCount;
+    }}
+<b><h3>Output:</h3></b>
+Total number of words in the file: 9
+</pre>
+
+
+</body>
+
+</html>

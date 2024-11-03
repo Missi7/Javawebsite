@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.util.Scanner;
+
+public class SplitStringIntoSubstrings {
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+        
+    // Get the input string from the user
+    System.out.print("Enter a string: ");
+    String inputString = scanner.nextLine();
+        
+    // Get the delimiter for splitting
+    System.out.print("Enter a delimiter (e.g., space, comma): ");
+    String delimiter = scanner.nextLine();
+        
+    // Split the string into substrings based on the delimiter
+    String[] substrings = inputString.split(delimiter);
+        
+    // Display the resulting substrings
+    System.out.println("Substrings:");
+    for (String substring : substrings) {
+System.out.println(substring.trim()); // trim to remove leading/trailing spaces
+    }
+        
+    scanner.close();
+    }
+}
+<b><h3>Output:</h3></b>
+Enter a string: Apple, Banana, Cherry, Date
+Enter a delimiter (e.g., space, comma): ,
+Substrings:
+Apple
+Banana
+Cherry
+Date
+</pre>
+
+
+</body>
+
+</html>

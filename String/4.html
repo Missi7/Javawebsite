@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.util.Scanner;
+
+public class RemoveCharacter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        System.out.print("Enter character to remove: ");
+        char charToRemove = scanner.next().charAt(0);
+                
+        String result = input.replace(String.valueOf(charToRemove), "");
+        System.out.println("Resulting String: " + result);
+    }
+}
+
+<b><h3>Output:</h3></b>
+Enter a string: Hello, World!
+Enter character to remove: o
+Resulting String: Hell, Wrld!
+</pre>
+
+
+</body>
+
+</html>

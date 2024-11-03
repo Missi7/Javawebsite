@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+public class DuplicateWords {
+    public static void main(String[] args) {
+        String str = "this is a test this test is a demo demo demo";
+        String[] words = new String[256];
+        boolean[] visited = new boolean[256];
+        int wordCount = 0;
+
+        String currentWord = "";
+        for (int i = 0; i &lt; str.length(); i++) {
+        char ch = str.charAt(i);
+        if (ch == ' ' || i == str.length() - 1) {
+            if (i == str.length() - 1 && ch != ' ') {
+                currentWord += ch;
+            }
+            boolean isDuplicate = false;
+            for (int j = 0; j &lt; wordCount; j++) {
+                if (words[j].equals(currentWord)) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+            if (!isDuplicate) {
+                    words[wordCount++] = currentWord;
+                    currentWord = "";
+                    } else {
+                        currentWord += ch;
+                    }
+            }
+
+        System.out.println("Duplicate words are:");
+        for (int i = 0; i &lt; wordCount; i++) {
+            if (!visited[i]) {
+                String word = words[i];
+                int count = 0;
+                for (int j = 0; j &lt; wordCount; j++) {
+                    if (words[j].equals(word)) {
+                        count++;
+                    }
+                }
+                if (count > 1) {
+                    System.out.println(word);
+                    visited[i] = true;
+                }
+            }
+        }
+        }
+}
+}
+<b><h3>Output:</h3></b>
+Duplicate words are:
+this
+test
+is
+demo
+</pre>
+
+
+</body>
+
+</html>

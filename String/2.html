@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class DeepCopy {
+    public static void main(String[] args) {
+        String original = "Hello";
+        StringBuffer sb = new StringBuffer(original);
+        String copy = sb.toString();
+        
+        System.out.println("Original: " + original);
+        System.out.println("Copy: " + copy);
+        
+        // Modify the original string
+        original = "World";
+        
+        System.out.println("After modification:");
+        System.out.println("Original: " + original);
+        System.out.println("Copy: " + copy);
+    }
+}
+<b><h3>Output:</h3></b>
+Original: Hello
+Copy: Hello
+After modification:
+Original: World
+Copy: Hello
+</pre>
+
+
+</body>
+
+</html>

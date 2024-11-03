@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+public class MaxMinChar {
+     public static void main(String[] args) {
+        String str = "programming";
+        int[] charCount = new int[256];
+
+        for (int i = 0; i &lt; str.length(); i++) {
+            charCount[str.charAt(i)]++;
+        }
+
+        char maxChar = ' ';
+        char minChar = ' ';
+        int maxCount = 0;
+        int minCount = Integer.MAX_VALUE;
+
+        for (int i = 0; i &lt; charCount.length; i++) {
+            if (charCount[i] > 0) {
+                if (charCount[i] > maxCount) {
+                    maxCount = charCount[i];
+                    maxChar = (char) i;
+                }
+                if (charCount[i] &lt; minCount) {
+                    minCount = charCount[i];
+                    minChar = (char) i;
+                }
+            }
+        }
+
+        System.out.println("Maximum occurring character: " + maxChar + " (" + maxCount + ")");
+        System.out.println("Minimum occurring character: " + minChar + " (" + minCount + ")");
+    }
+}
+<b><h3>Output:</h3></b>
+Maximum occurring character: g (2)
+Minimum occurring character: a (1)
+</pre>
+
+
+</body>
+
+</html>

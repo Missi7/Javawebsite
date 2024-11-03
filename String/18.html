@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+public class StringRotation {
+    public static void main(String[] args) {
+        String str1 = "abcde";
+        String str2 = "cdeab";
+                
+        if (str1.length() != str2.length()) {
+            System.out.println("Not a rotation");
+            return;
+        }
+
+        String combined = str1 + str1;
+        boolean isRotation = true;
+
+        for (int i = 0; i &lt;= combined.length() - str2.length(); i++) {
+            boolean match = true;
+            for (int j = 0; j &lt; str2.length(); j++) {
+                if (combined.charAt(i + j) != str2.charAt(j)) {
+                    match = false;
+                    break;
+                }
+            }
+            if (match) {
+                isRotation = true;
+                break;
+            }
+        }
+
+        System.out.println(isRotation ? "Rotation" : "Not a rotation");
+    }
+}
+<b><h3>Output:</h3></b>
+Rotation
+</pre>
+
+
+</body>
+
+</html>

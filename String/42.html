@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class Main{
+    public static void main(String[] args){
+    String st1 = "Hello", st2 = "World";
+    System.out.println("Before Swap\nString 1 : " + st1 + " String 2 : " + st2);
+    st1 += st2;
+    st2 = st1.substring(0, st1.length() - st2.length());
+    st1 = st1.substring(st2.length());
+    System.out.println("After Swap\nString 1 : " + st1 + " String 2 : " + st2);
+        
+    }
+}
+<b><h3>Output:</h3></b>
+Before Swap
+String 1 : Hello String 2 : World
+After Swap
+String 1 : World String 2 : Hello
+</pre>
+
+
+</body>
+
+</html>

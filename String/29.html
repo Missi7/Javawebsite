@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+        
+public class MostRepeatedWord {
+public static void main(String[] args) {
+    String filePath = "sample.txt"; // Specify the path to your text file here
+    findMostRepeatedWord(filePath);
+}
+        
+public static void findMostRepeatedWord(String filePath) {
+Map wordCountMap = new HashMap&lt;>();
+        
+try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+    String line;
+    while ((line = reader.readLine()) != null) {
+        String[] words = line.toLowerCase().split("\W+"); // Split line into words, ignoring punctuation
+        for (String word : words) {
+            if (word.isEmpty()) continue;
+            wordCountMap.put(word, wordCountMap.getOrDefault(word, 0) + 1);
+        }
+    }
+        
+// Find the most repeated word
+String mostRepeatedWord = null;
+int maxCount = 0;
+        
+for (Map.Entry entry : wordCountMap.entrySet()) {
+    if (entry.getValue() > maxCount) {
+        mostRepeatedWord = entry.getKey();
+        maxCount = entry.getValue();
+    }
+}
+        
+if (mostRepeatedWord != null) {
+    System.out.println("Most repeated word: " + mostRepeatedWord);
+    System.out.println("Frequency: " + maxCount);
+} else {
+    System.out.println("No words found in the file.");
+}
+} catch (IOException e) {
+    System.out.println("An error occurred while reading the file: " + e.getMessage());
+    }
+}}
+<b><h3>Output:</h3></b>
+Most repeated word: java
+Frequency: 3
+</pre>
+
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class Main{
+    public static void main(String[] args){
+        StringBuffer str = new StringBuffer("Hello World");
+        System.out.println("Initial String : " + str);
+        str.insert(5, "!");
+        System.out.println("After Insert function : " + str);
+        str.append(" I am India.");
+        System.out.println("After Append function : " + str);
+        str.delete(0, 7);
+        System.out.println("After Delete function : " + str);
+        str.replace(2, 4, "My");
+        System.out.println("After Replace function : " + str);
+        
+    }
+}
+<b><h3>Output:</h3></b>
+Initial String : Hello World
+After Insert function : Hello! World
+After Append function : Hello! World I am India.
+After Delete function : World I am India.
+After Replace function : WoMyd I am India.
+</pre>
+
+
+</body>
+
+</html>

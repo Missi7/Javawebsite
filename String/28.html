@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.util.Scanner;
+
+public class LongestRepeatingSequence {
+public static void main(String[] args) {
+    // Create a Scanner object for user input
+    Scanner scanner = new Scanner(System.in);
+        
+    // Prompt the user for input string
+    System.out.print("Enter a string: ");
+    String inputString = scanner.nextLine();
+        
+    // Call the method to find the longest repeating sequence
+    String longestSequence = findLongestRepeatingSequence(inputString);
+        
+    // Display the result
+    if (longestSequence.isEmpty()) {
+        System.out.println("No repeating sequence found.");
+    } else {
+        System.out.println("Longest repeating sequence: " + longestSequence);
+    }
+        
+    // Close the scanner
+    scanner.close();
+}
+        
+// Method to find the longest repeating sequence in a string
+public static String findLongestRepeatingSequence(String str) {
+int n = str.length();
+String longestRepeating = "";
+        
+// Use a nested loop to compare substrings
+for (int i = 0; i &lt; n; i++) {
+    for (int j = i + 1; j &lt; n; j++) {
+        int len = 0;
+        
+        // Compare characters while they are the same
+        while (j + len &lt; n && str.charAt(i + len) == str.charAt(j + len)) {
+            len++;
+        }
+        
+        // Update the longest repeating substring if found
+        if (len > longestRepeating.length() && len > 0) {
+            longestRepeating = str.substring(i, i + len);
+        }
+    }
+}
+        
+return longestRepeating; // Return the longest repeating substring
+    }
+}
+<b><h3>Output:</h3></b>
+Enter a string: abcabcabcd
+Longest repeating sequence: abc
+</pre>
+
+
+</body>
+
+</html>

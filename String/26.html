@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+public class CharacterFrequency {
+    public static void main(String[] args) {
+        // Input string
+        String str = "programming";
+        
+        // Array to track character frequencies
+        int[] freq = new int[256]; // ASCII characters range from 0 to 255
+        
+        // Loop through the string to count frequencies
+        for (int i = 0; i &lt; str.length(); i++) {
+            char ch = str.charAt(i);
+            freq[ch]++;
+        }
+        
+        // Print the frequencies of characters
+        System.out.println("Character frequencies are:");
+        for (int i = 0; i &lt; freq.length; i++) {
+            if (freq[i] > 0) {
+                System.out.println((char) i + ": " + freq[i]);
+            }
+        }
+    }
+}
+<b><h3>Output:</h3></b>
+Character frequencies are:
+p: 2
+r: 2
+o: 1
+g: 2
+a: 1
+m: 2
+i: 1
+n: 1
+</pre>
+
+
+</body>
+
+</html>

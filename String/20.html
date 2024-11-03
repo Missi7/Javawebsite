@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+public class SubsetsOfString {
+    public static void main(String[] args) {
+        String str = "abc";
+        int n = str.length();
+        System.out.println("Subsets are:");
+                
+        for (int i = 0; i &lt; (1 &lt;&lt;n); i++) {
+            String subset = "";
+            for (int j = 0; j &lt; n; j++) {
+                if ((i & (1&lt;&lt; j)) != 0) {
+                    subset += str.charAt(j);
+                }
+            }
+            System.out.println(subset);
+        }
+    }
+}
+<b><h3>Output:</h3></b>
+Subsets are:
+a
+b
+ab
+c
+ac
+bc
+abc
+</pre>
+
+
+</body>
+
+</html>

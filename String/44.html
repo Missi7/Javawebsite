@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.util.Scanner;
+
+public class CheckStringContains {
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+        
+    // Get the first string from the user
+    System.out.print("Enter the first string: ");
+    String firstString = scanner.nextLine();
+        
+    // Get the second string from the user
+    System.out.print("Enter the second string: ");
+    String secondString = scanner.nextLine();
+        
+    // Check if the first string contains the second string
+    if (firstString.contains(secondString)) {
+        System.out.println("The first string contains the second string.");
+    } else {
+        System.out.println("The first string does not contain the second string.");
+    }
+        
+        scanner.close();
+    }
+}
+<b><h3>Output:</h3></b>
+Enter the first string: Hello, welcome to the world of Java!
+Enter the second string: welcome
+The first string contains the second string.
+</pre>
+
+
+</body>
+
+</html>

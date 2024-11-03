@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class Main{
+    static String insertString(String str, String str2, int index){
+        String newstr = "";
+        if(index &lt; 0 || index > str.length()){
+            return null;
+        }
+        for(int i = 0; i &lt; index; i++){
+            newstr += str.charAt(i);
+        }
+        for(int i = 0; i &lt; str2.length(); i++){
+            newstr += str2.charAt(i);
+        }
+        for(int i = index; i &lt; str.length(); i++){
+            newstr += str.charAt(i);
+        }
+        return newstr;
+    }
+    public static void main(String[] args){
+        System.out.println(insertString("Heo", "ll", 2));
+    }
+}
+<b><h3>Output:</h3></b>
+Hello
+</pre>
+
+
+</body>
+
+</html>
