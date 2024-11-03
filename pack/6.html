@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+package pack1;
+public class ClassA
+    {
+       public void display()
+        {
+            System.out.println("This is Class A!");
+        }
+    }
+--------------------------------------------------
+package pack1;
+public class ClassB
+    {
+        public void display()
+        {
+            System.out.println("This is Class B!");
+        }
+    }
+---------------------------------------------------
+package pack1;
+public class ClassC
+    {
+        public void display()
+        {
+            System.out.println("This is Class C!");
+        }
+    }
+--------------------------------------------------
+package pack1;
+public class ClassD
+    {
+        public void display()
+        {
+            System.out.println("This is Class D!");
+        }
+    }
+--------------------------------------------------
+
+import pack1.*;
+public class MainPackage
+{
+    public static void main(String st[])
+    {
+        ClassA objA = new ClassA();
+        objA.display();
+        ClassB objB = new ClassB();
+        objB.display();
+        ClassC objC = new ClassC();
+        objC.display();
+        ClassD objD = new ClassD();
+        objD.display();
+    }
+}
+<b><h3>Output:</h3></b>
+This is Class A!
+This is Class B!
+This is Class C!
+This is Class D!
+</pre>
+
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+package mypackage;
+
+public class PublicClass {
+    public int publicVar = 30;
+    public void display() {
+        System.out.println("Public Class");
+    }
+}
+
+package anotherpackage;
+
+import mypackage.PublicClass;
+
+public class AccessPublic {
+    public static void main(String[] args) {
+        PublicClass pc = new PublicClass();
+        System.out.println("Public Variable: " + pc.publicVar);
+    }
+}
+<b><h3>Output:</h3></b>
+Public Variable: 30
+</pre>
+
+
+</body>
+
+</html>
