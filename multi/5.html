@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class PrimeNum
+{
+int num,sum,isPrime;
+void primeNum(int s,int l)
+{
+                
+    for(num=s;num&lt;=l;num++)
+    {
+    isPrime=1;
+    for(int i = 2; i&lt;=num/2;i++)
+    {
+    if(num%i==0)
+    {
+    isPrime =0;
+    break;
+    }
+    }
+    if(isPrime==1)
+    {
+        sum+=num;
+    }
+    }
+    System.out.println("Sum of "+s+" to "+l+" prime Number : "+sum);
+    }
+}
+class Mythread extends Thread
+{
+    PrimeNum obj = new PrimeNum();
+    public void run()
+    {
+    obj.primeNum(5, 7);
+    }
+}
+class Main{
+public static void main(String[] args) {
+    Mythread t1 = new Mythread();
+    t1.start();
+}
+}
+<b><h3>Output:</h3></b>
+Sum of 5 to 7 prime Number : 12
+</pre>
+
+
+</body>
+
+</html>

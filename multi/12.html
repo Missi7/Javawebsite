@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class NumberGenerator {
+private int number;
+private boolean isReady = false;
+        
+public synchronized void generateNumber() {
+    for (int i = 1; i &lt;= 10; i++) {
+        number = i;
+        isReady = true;
+        System.out.println("Generated: " + number);
+        notify(); // Notify the printer thread that a new number is ready
+        try {
+            Thread.sleep(500); // Simulate time taken to generate a number
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+}
+        
+public synchronized void printNumber() {
+for (int i = 1; i &lt;= 10; i++) {
+while (!isReady) {
+    try {
+        wait(); // Wait until a number is generated
+    } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
+    }
+}
+System.out.println("Printed: " + number);
+isReady = false; // Reset the flag
+notify(); // Notify the generator thread that the number has been printed
+try {
+    Thread.sleep(300); // Simulate time taken to print a number
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
+        }
+    }
+}
+        
+class GeneratorThread extends Thread {
+    private final NumberGenerator numberGenerator;
+
+    public GeneratorThread(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
+    }
+
+    //override
+    public void run() {
+        numberGenerator.generateNumber();
+    }
+}
+        
+class PrinterThread extends Thread {
+    private final NumberGenerator numberGenerator;
+
+    public PrinterThread(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
+    }
+
+    //override
+    public void run() {
+        numberGenerator.printNumber();
+    }
+}
+        
+public class Main {
+    public static void main(String[] args) {
+        NumberGenerator numberGenerator = new NumberGenerator();
+        GeneratorThread generatorThread = new GeneratorThread(numberGenerator);
+        PrinterThread printerThread = new PrinterThread(numberGenerator);
+        
+        generatorThread.start();
+        printerThread.start();
+        
+        try {
+            generatorThread.join();
+            printerThread.join();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+}
+<b><h3>Output:</h3></b>
+Generated: 1
+Printed: 1
+Generated: 2
+Printed: 2
+Generated: 3
+Printed: 3
+Generated: 4
+Printed: 4
+Generated: 5
+Printed: 5
+Generated: 6
+Printed: 6
+Generated: 7
+Printed: 7
+Generated: 8
+Printed: 8
+Generated: 9
+Printed: 9
+Generated: 10
+Printed: 10
+</pre>
+
+
+</body>
+
+</html>

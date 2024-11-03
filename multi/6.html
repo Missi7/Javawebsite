@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+        
+public class ConcurrentWebCrawler {
+        
+public static void main(String[] args) {
+    // List of websites to crawl
+    String[] websites = {
+        "http://example.com",
+        "http://example.org",
+        "http://example.net",
+        "http://www.google.com"
+    };
+        
+    // Create a fixed thread pool
+    ExecutorService executorService = Executors.newFixedThreadPool(4);
+    // Submit tasks to crawl each website
+    for (String website : websites) {
+        executorService.submit(new WebCrawlerTask(website));
+    }
+    // Shutdown the executor service
+    executorService.shutdown();
+}
+        
+static class WebCrawlerTask implements Runnable {
+    private final String website;
+        
+    public WebCrawlerTask(String website) {
+        this.website = website;
+    }
+        
+public void run() {
+try {
+    // Create a URL object
+    URL url = new URL(website);
+    // Open a connection
+    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+    connection.setRequestMethod("GET");
+        
+    // Read the response
+    BufferedReader reader = new BufferedReader(new InputStreamR(connection.getInputStream()));
+    String line;
+    StringBuilder response = new StringBuilder();
+    while ((line = reader.readLine()) != null) {
+           response.append(line).append("");
+    }
+    reader.close();
+        
+// Print the response (or process it as needed)
+System.out.println("Crawled: " + website);
+System.out.println("Response Length: " + response.length() + " characters");
+System.out.println("-----------------------------------------------------");
+} catch (Exception e) {
+    System.err.println("Error crawling " + website + ": " + e.getMessage());
+}
+    }
+    }
+}
+<b><h3>Output:</h3></b>
+Crawled: http://example.com
+Response Length: 1256 characters
+-----------------------------------------------------
+Crawled: http://example.org
+Response Length: 874 characters
+-----------------------------------------------------
+Crawled: http://example.net
+Response Length: 1124 characters
+-----------------------------------------------------
+Crawled: http://www.google.com
+Response Length: 4568 characters
+-----------------------------------------------------
+</pre>
+
+
+</body>
+
+</html>

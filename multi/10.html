@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class MyThread extends Thread{
+MyThread(String name , int prior)
+{
+    setName(name);
+    setPriority(prior);
+}
+public void run()
+{
+    System.out.println("Thread Name : "+getName());
+    System.out.println("Thread Priority : "+getPriority());
+}
+}
+class Main {
+    public static void main(String[] args) {
+    MyThread t1 = new MyThread("Thread 1",2);
+    MyThread t2 = new MyThread("Thread 2",2);
+    MyThread t3 = new MyThread("Thread 3",2);
+    MyThread t4 = new MyThread("Thread 4",2);
+    t1.start();
+    t2.start();
+    t3.start();
+    t4.start();
+    }    
+}
+<b><h3>Output:</h3></b>
+Thread Name : Thread 2
+Thread Priority : 2
+Thread Name : Thread 1
+Thread Priority : 2
+Thread Name : Thread 4
+Thread Priority : 2
+Thread Name : Thread 3
+Thread Priority : 2
+</pre>
+
+
+</body>
+
+</html>

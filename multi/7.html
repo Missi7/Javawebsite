@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class BankAccount {
+private int balance;
+            
+public BankAccount(int initialBalance) {
+    this.balance = initialBalance;
+}
+            
+// Synchronized method for deposit
+public synchronized void deposit(int amount) {
+    if (amount > 0) {
+        balance += amount;
+System.out.println(Thread.currentThread().getName() + " deposited: Rsamount + ", New Balance: Rs" + balance);
+    }
+}
+            
+// Synchronized method for withdrawal
+public synchronized void withdraw(int amount) {
+if (amount > 0 && amount &lt;= balance) {
+    balance -= amount;
+    System.out.println(Thread.currentThread().getName() + " withdrew: Rs" + amount + ", New Balance: Rs" + balance);
+} else {
+    System.out.println(Thread.currentThread().getName() + " triewithdraw: Rs" + amount + " (Insufficient funds)");
+    }
+}
+            
+public int getBalance() {
+    return balance;
+}
+}
+            
+class DepositTask implements Runnable {
+    private final BankAccount account;
+    private final int amount;
+            
+    public DepositTask(BankAccount account, int amount) {
+        this.account = account;
+        this.amount = amount;
+    }
+        
+    public void run() {
+        account.deposit(amount);
+    }
+}
+            
+class WithdrawTask implements Runnable {
+    private final BankAccount account;
+    private final int amount;
+            
+    public WithdrawTask(BankAccount account, int amount) {
+        this.account = account;
+        this.amount = amount;
+    }
+            
+    public void run() {
+        account.withdraw(amount);
+    }
+}
+            
+public class BankSimulation {
+public static void main(String[] args) {
+    BankAccount account = new BankAccount(1000); // Initial balance of Rs1000
+            
+    // Create a thread pool
+    Thread[] threads = new Thread[6];
+            
+    // Create deposit tasks
+    threads[0] = new Thread(new DepositTask(account, 500), "Thread-Deposit-1");
+    threads[1] = new Thread(new DepositTask(account, 300), "Thread-Deposit-2");
+            
+    // Create withdrawal tasks
+    threads[2] = new Thread(new WithdrawTask(account, 400), "Thread-Withdraw-1");
+    threads[3] = new Thread(new WithdrawTask(account, 200), "Thread-Withdraw-2");
+    threads[4] = new Thread(new WithdrawTask(account, 700), "Thread-Withdraw-3");
+    threads[5] = new Thread(new WithdrawTask(account, 600), "Thread-Withdraw-4");
+            
+    // Start all threads
+    for (Thread thread : threads) {
+        thread.start();
+    }
+            
+    // Wait for all threads to finish
+    for (Thread thread : threads) {
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+            
+    // Final account balance
+    System.out.println("Final Balance: Rs" + account.getBalance());
+    }
+}
+<b><h3>Output:</h3></b>
+Thread-Deposit-1 deposited: Rs500, New Balance: Rs1500
+Thread-Withdraw-4 withdrew: Rs600, New Balance: Rs900
+Thread-Withdraw-3 withdrew: Rs700, New Balance: Rs200
+Thread-Deposit-2 deposited: Rs300, New Balance: Rs500
+Thread-Withdraw-1 withdrew: Rs400, New Balance: Rs100
+Thread-Withdraw-2 tried to withdraw: Rs200 (Insufficient funds)
+Final Balance: Rs100
+</pre>
+
+
+</body>
+
+</html>

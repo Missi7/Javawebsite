@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+
+class Sort{
+void sortArr(int arr[])
+{
+    int temp;
+    for (int i = 0; i &lt; arr.length; i++) {
+        for (int j = i+1; j &lt; arr.length; j++) {
+            if (arr[i]>arr[j]) {
+                temp = arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+            }
+        }
+    }
+}
+}
+class Mythread extends Thread
+{
+    Sort s=new Sort();
+    public void run()
+    {
+        int array[] = {1,4,3,5,6,7};
+        System.out.println(getName()+" Unsorted Array: ");
+        for (int i = 0; i &lt; array.length; i++) {
+            System.out.println(array[i]);
+        }
+        s.sortArr(array);
+        System.out.println(getName()+" Sorted Array: ");
+        for (int i = 0; i &lt; array.length; i++) {
+            System.out.println(array[i]);
+        }
+    }
+}
+public class Thread3 {
+    public static void main(String[] args) {
+        Mythread t1 = new Mythread();
+        Mythread t2 = new Mythread();
+        Mythread t3 = new Mythread();
+        Mythread t4 = new Mythread();
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
+    }
+}
+<b><h3>Output:</h3></b>
+Thread-0 Unsorted Array:
+1
+4
+3
+5
+6
+7
+Thread-3 Unsorted Array:
+1
+4
+3
+5
+6
+Thread-2 Unsorted Array:
+1
+4
+3
+5
+6
+7
+Thread-2 Sorted Array:
+1
+3
+4
+5
+6
+7
+Thread-1 Unsorted Array:
+1
+4
+3
+5
+6
+7
+7
+Thread-0 Sorted Array:
+1
+3
+4
+5
+6
+7
+Thread-3 Sorted Array:
+1
+3
+4
+5
+6
+7
+Thread-1 Sorted Array:
+1
+3
+4
+5
+6
+7
+</pre>
+
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class MatrixMulti
+{
+void matrixMulti(int arr1[][],int arr2[][],int multi[][])
+{
+    int temp;
+    for (int i = 0; i &lt; arr1.length; i++) {
+        for (int j = 0; j &lt; arr1[i].length; j++) {
+            for (int k = 0; k &lt; arr1[i].length; k++) {
+                multi[i][j]+=arr1[i][k]*arr2[k][j];
+            }
+        }
+    }
+}
+}
+class Mythread extends Thread
+{
+MatrixMulti matrix = new MatrixMulti();
+public void run()
+{
+    int array1[][] = {{1,2,3},{4,5,1},{6,8,4}};
+    int array2[][] = {{4,6,7},{8,3,1},{2,6,2}};
+    int multi[][] = new int[array1.length][array1[0].length];
+    System.out.println(getName()+" Matrix 1: ");
+    for (int i = 0; i &lt; array1.length; i++) {
+        for (int j = 0; j &lt; array1[0].length; j++) {
+            System.out.print(array1[i][j]+" ");
+        }
+        System.out.println();
+    }
+                
+    System.out.println(getName()+" Matrix 2: ");
+    for (int i = 0; i &lt; array2.length; i++) {
+        for (int j = 0; j &lt; array2[0].length; j++) {
+            System.out.print(array2[i][j]+" ");
+        }
+        System.out.println();
+    }
+    matrix.matrixMulti(array1, array2, multi);
+    for (int i = 0; i &lt; multi.length; i++) {
+        for (int j = 0; j &lt; multi[0].length; j++) {
+            System.out.print(multi[i][j]+" ");
+        }
+        System.out.println();
+    }
+    }
+}
+class Main {
+public static void main(String[] args) {
+    Mythread t1= new Mythread();
+    t1.start();
+                
+}           
+}
+<b><h3>Output:</h3></b>
+Thread-0 Matrix 1:
+1 2 3
+4 5 1
+6 8 4
+Thread-0 Matrix 2:
+4 6 7
+8 3 1
+2 6 2
+26 30 15
+58 45 35
+96 84 58
+</pre>
+
+
+</body>
+
+</html>

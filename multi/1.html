@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class Mythread extends Thread
+    {
+    public void run()
+    {
+        System.out.println(getName()+" Hello World!");
+    }
+    }
+class Thread1 {
+    public static void main(String[] args) {
+        Mythread t1 = new Mythread();
+        Mythread t2 = new Mythread();
+        Mythread t3 = new Mythread();
+        Mythread t4 = new Mythread();
+        t1.setName("T1");
+        t2.setName("T2");
+        t3.setName("T3");
+        t4.setName("T4");
+        t2.start();
+        t1.start();
+        t3.start();
+        t4.start();
+    }
+            
+}
+<b><h3>Output:</h3></b>
+T2 Hello World!
+T3 Hello World!
+T1 Hello World!
+T4 Hello World!
+</pre>
+
+
+</body>
+
+</html>
