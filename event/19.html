@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.awt.*;
+import java.awt.event.*;
+public class NumericTextFieldApp extends Frame {
+private TextField numberField;
+public NumericTextFieldApp() {
+    // Set up the frame
+    setTitle("Numeric Text Field Validation");
+    setSize(300, 150);
+    setLayout(new FlowLayout());
+        
+    // Create a TextField
+    numberField = new TextField(20);
+                
+    // Add KeyListener to the TextField
+    numberField.addKeyListener(new KeyAdapter() {
+                    
+    public void keyTyped(KeyEvent e) {
+        char c = e.getKeyChar();
+        // Check if the input is not a digit and is not a control character
+        if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE && cKeyEvent.VK_DELETE) {
+            e.consume(); // Consume the event to prevent the character from being typed
+        }
+    }
+    });
+        
+    // Add components to the frame
+        add(new Label("Enter numbers only:"));
+        add(numberField);
+        
+        // Set up close operation
+        addWindowListener(new WindowAdapter() {
+                    
+        public void windowClosing(WindowEvent windowEvent) {
+            System.exit(0);
+        }
+    });
+}
+        
+    public static void main(String[] args) {
+        // Create and show the frame
+        NumericTextFieldApp app = new NumericTextFieldApp();
+        app.setVisible(true);
+    }
+}
+<!-- <b><h3>Output:</h3></b> -->
+
+</pre>
+
+
+</body>
+
+</html>

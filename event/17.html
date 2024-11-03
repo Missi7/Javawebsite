@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+public class ColorChangeApplet extends Applet {
+        
+    private Button colorButton;
+    private Random random;
+public void init() {
+    // Initialize button and random generator
+    colorButton = new Button("Change Background Color");
+    random = new Random();
+        
+    // Set layout and add button
+    setLayout(new FlowLayout());
+    add(colorButton);
+        
+    // Add action listener to button
+    colorButton.addActionListener(new ActionListener() {
+                    
+        public void actionPerformed(ActionEvent e) {
+            changeBackgroundColor();
+        }
+    });
+}
+        
+private void changeBackgroundColor() {
+    // Generate random color
+    Color randomColor = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+                
+    // Set the applet's background color
+    setBackground(randomColor);
+        
+    // Repaint to apply the color change immediately
+    repaint();
+}
+}
+       
+<!-- <b><h3>Output:</h3></b> -->
+
+</pre>
+
+
+</body>
+
+</html>

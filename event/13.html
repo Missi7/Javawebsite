@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+//Get and Set State and Get Label of a Check Box
+import java.awt.*;
+import java.awt.event.*;
+class Close extends Frame{
+    Label l = new Label("Close frame using Window Adaptor!");
+    Close(){
+    setBounds(100,100,400,400);
+    setLayout(new FlowLayout(FlowLayout.LEFT));
+    add(l);
+    addWindowListener(new WindowAdapter() {
+        public void windowClosing(WindowEvent e)
+        {
+            System.exit(0);
+        }
+    });
+        setVisible(true);
+    }
+}
+class Main
+{
+    public static void main(String[] args) {
+        new Close();
+    }
+}
+<!-- <b><h3>Output:</h3></b> -->
+
+</pre>
+
+
+</body>
+
+</html>

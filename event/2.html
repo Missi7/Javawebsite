@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.awt.*;
+import java.awt.event.*;
+        
+public class TextAreaPassword extends Frame {
+        
+private TextArea textArea;
+private TextField passwordField;
+        
+public TextAreaPassword() {
+    setTitle("Text Area and Password Field");
+    setSize(400, 400);
+    setLayout(new FlowLayout(FlowLayout.LEFT));
+        
+    textArea = new TextArea("Enter text here...", 5, 30);
+    add(textArea);
+        
+    passwordField = new TextField(20);
+    passwordField.setEchoChar('*');  // Mask input with '*'
+    add(passwordField);
+        
+    // Set up a window listener to close the application
+    addWindowListener(new WindowAdapter() {
+        public void windowClosing(WindowEvent e) {
+            System.exit(0);
+        }
+    });
+}
+        
+public static void main(String[] args) {
+    // Create and show the frame
+    TextAreaPassword app = new TextAreaPassword();
+    app.setVisible(true);
+}
+}
+<!-- <b><h3>Output:</h3></b> -->
+
+</pre>
+
+
+</body>
+
+</html>

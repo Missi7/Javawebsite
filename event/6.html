@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.awt.*;
+import java.awt.event.*;
+class DEM6 extends Frame{
+Button btn = new Button("Click me");
+Label l = new Label();
+DEM6()
+{
+    setBounds(100,100,400,400);
+    setLayout(new FlowLayout(FlowLayout.LEFT));
+    add(btn);
+    l.setSize(100, 50);
+    add(l);
+    btn.addMouseListener(new MouseListener() {
+public  void mouseClicked(MouseEvent e)
+    {
+        l.setText("Mouse Clicked");
+    }
+public  void mousePressed(MouseEvent e)
+    {
+        l.setText("MousePressed");
+    }
+public  void mouseReleased(MouseEvent e)
+    {
+        l.setText("Mouse Relased");
+    }
+public  void mouseEntered(MouseEvent e)
+    {
+        l.setText("Mouse Eneted");
+    }
+public  void mouseExited(MouseEvent e)
+    {
+        l.setText("Mouse Exited");
+    }
+});
+setVisible(true);
+addWindowListener(new WindowAdapter() {
+    public void windowClosing(WindowEvent e)
+    {
+        System.exit(0);
+    }
+});
+    }
+}
+class Main
+{
+    public static void main(String[] args) {
+        new DEM6();
+    }
+}
+<!-- <b><h3>Output:</h3></b> -->
+</pre>
+
+
+</body>
+
+</html>

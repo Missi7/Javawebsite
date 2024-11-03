@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.awt.*;
+import java.awt.event.*;
+class Radio extends Frame{
+    private Label l = new Label("Gender");
+    private Checkbox cb1 = new Checkbox("Male");
+    private Checkbox cb2 = new Checkbox("Female");
+    private CheckboxGroup cbg = new CheckboxGroup();
+    Radio()
+    {
+    setBounds(100,100,400,400);
+    setLayout(new FlowLayout(FlowLayout.LEFT));
+    add(l);
+    cb1.setCheckboxGroup(cbg);
+    cb2.setCheckboxGroup(cbg);
+    add(cb1);
+    add(cb2);
+    setVisible(true);
+    addWindowListener(new WindowAdapter() {
+    public void windowClosing(WindowEvent e)
+        {
+            System.exit(0);
+        }
+    });
+    }
+}
+class Main
+    {
+        public static void main(String[] args) {
+        new Radio();
+    }
+}
+<!-- <b><h3>Output:</h3></b> -->
+
+</pre>
+
+
+</body>
+
+</html>

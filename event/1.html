@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+        
+class MyLabel extends Frame{
+Label l= new Label("Hello AWT");
+Label l1= new Label("Name");
+Label l2= new Label("Class");
+Label l3= new Label("Roll No");
+MyLabel()
+{
+    super("Label");
+    setBounds(100,100,400,400);
+    setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
+    add(l);
+    add(l3);
+    add(l1);
+    add(l2);
+        
+    addWindowListener(new WindowAdapter() {
+       public void windowClosing(WindowEvent e)
+       {
+        System.exit(1);
+       }
+    });
+    setVisible(true);
+    }
+}
+        
+class Main {
+        
+    public static void main(String[] args) {
+        new MyLabel();
+    }
+        
+}
+<!-- <b><h3>Output:</h3></b> -->
+
+</pre>
+
+
+</body>
+
+</html>
