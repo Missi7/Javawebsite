@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+// Base class
+class Vehicle {
+protected String make;
+protected String model;
+protected int year;
+protected String fuelType;
+    
+public Vehicle(String make, String model, int year, String fuelType) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+    this.fuelType = fuelType;
+}
+    
+    public double calculateFuelEfficiency() {
+        // Default implementation, can be overridden
+        return 0.0;
+    }
+    
+    public double calculateDistanceTraveled(double fuel) {
+        return calculateFuelEfficiency() * fuel;
+    }
+    
+    public double calculateMaxSpeed() {
+        // Default implementation, can be overridden
+        return 0.0;
+    }
+}
+    
+// Subclass: Truck
+class Truck extends Vehicle {
+private double loadCapacity; // in tons
+    
+public Truck(String make, String model, int year, String fuelType, double loadCapacity) {
+    super(make, model, year, fuelType);
+    this.loadCapacity = loadCapacity;
+}
+    
+        
+public double calculateFuelEfficiency() {
+    // Example: Fuel efficiency decreases with load
+    return 15 - (loadCapacity * 0.5); // Example calculation
+}
+    
+  
+public double calculateMaxSpeed() {
+    return 100; // Example max speed for trucks
+    }
+}
+    
+// Subclass: Car
+class Car extends Vehicle {
+    private int numberOfDoors;
+    
+    public Car(String make, String model, int year, String fuelType, int numberOfDoors) {
+        super(make, model, year, fuelType);
+        this.numberOfDoors = numberOfDoors;
+    }
+    
+    public double calculateFuelEfficiency() {
+        return 25; // Example fuel efficiency for cars
+    }
+    
+    public double calculateMaxSpeed() {
+        return 150; // Example max speed for cars
+    }
+}
+// Subclass: Motorcycle
+class Motorcycle extends Vehicle {
+private boolean hasSidecar;
+    
+public Motorcycle(String make, String model, int year, String fuelType, boolean hasSidecar) {
+    super(make, model, year, fuelType);
+    this.hasSidecar = hasSidecar;
+}
+    
+        
+public double calculateFuelEfficiency() {
+    return 40; // Example fuel efficiency for motorcycles
+}
+    
+public double calculateMaxSpeed() {
+    return 180; // Example max speed for motorcycles
+    }
+}
+    
+public class VehicleTest {
+public static void main(String[] args) {
+    Truck truck = new Truck("Ford", "F-150", 2020, "Gasoline", 2.5);
+    Car car = new Car("Toyota", "Camry", 2021, "Hybrid", 4);
+    Motorcycle motorcycle = new Motorcycle("Harley-Davidson", "Street 750", 2019, "Gasoline", false);
+    
+    double truckFuel = 10; // gallons
+    double carFuel = 5; // gallons
+    double motorcycleFuel = 3; // gallons
+    
+    System.out.println("Truck Fuel Efficiency: " + truck.calculateFuelEfficiency() + " MPG");
+    System.out.println("Truck Distance Traveled: " + truck.calculateDistanceTraveled(truckFuel) + " miles");
+    System.out.println("Truck Max Speed: " + truck.calculateMaxSpeed() + " mph");
+    
+    System.out.println("\nCar Fuel Efficiency: " + car.calculateFuelEfficiency() + " MPG");
+    System.out.println("Car Distance Traveled: " + car.calculateDistanceTraveled(carFuel) + " miles");
+    System.out.println("Car Max Speed: " + car.calculateMaxSpeed() + " mph");
+    
+    System.out.println("\nMotorcycle Fuel Efficiency: " + motorcycle.calculateFuelEfficiency() + " MPG");
+    System.out.println("Motorcycle Distance Traveled: " + motorcycle.calculateDistanceTraveled(motorcycleFuel) + " miles");
+    System.out.println("Motorcycle Max Speed: " + motorcycle.calculateMaxSpeed() + " mph");
+}
+}
+<b><h3>Output:</h3></b>
+Truck Fuel Efficiency: 12.5 MPG
+Truck Distance Traveled: 125.0 miles
+Truck Max Speed: 100.0 mph
+
+Car Fuel Efficiency: 25.0 MPG
+Car Distance Traveled: 125.0 miles
+Car Max Speed: 150.0 mph
+
+Motorcycle Fuel Efficiency: 40.0 MPG
+Motorcycle Distance Traveled: 120.0 miles
+Motorcycle Max Speed: 180.0 mph
+</pre>
+
+
+</body>
+
+</html>
