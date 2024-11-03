@@ -29,27 +29,29 @@
 
 <body>
     <pre>
-//Write a Java program to print the ascii value of a given character.
+// Java Program to find area of triangle
 
+    class AreaOfTriangle{
+        double base; 
+        double height;
+        AreaOfTriangle(double b, double h){
+            base = b;
+            height = h;
+        }
+        double areaOfTriangle(){
+            return 0.5*base*height;
+        }
+    }
+    
     class Main{
         public static void main(String st[]){
-            java.io.InputStreamReader isr = new java.io.InputStreamReader(System.in);
-            java.io.BufferedReader reader = new java.io.BufferedReader(isr);
-        try{
-            System.out.print("Enter a character : ");
-            char c = (char)reader.read();
-            int ascii = c;
-            System.out.println("The ASCII value of "+c+ " is "+ascii);
-        }
-        catch(Throwable ex){
-            System.out.println(ex.getMessage());
-        }
+        AreaOfTriangle triangle = new AreaOfTriangle(3,6);
+        System.out.println("Area of triangle : "+triangle.areaOfTriangle());
         }
     }
 
 <b><h3>Output:</h3></b>
-Enter a character : e
-The ASCII value of e is 101
+Area of triangle : 9.0
 </pre>
 
 

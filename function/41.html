@@ -29,27 +29,27 @@
 
 <body>
     <pre>
-//Write a Java program to print the ascii value of a given character.
+//Java program to calculate average marks
 
-    class Main{
+    class AverageMarks{
         public static void main(String st[]){
-            java.io.InputStreamReader isr = new java.io.InputStreamReader(System.in);
-            java.io.BufferedReader reader = new java.io.BufferedReader(isr);
-        try{
-            System.out.print("Enter a character : ");
-            char c = (char)reader.read();
-            int ascii = c;
-            System.out.println("The ASCII value of "+c+ " is "+ascii);
-        }
-        catch(Throwable ex){
-            System.out.println(ex.getMessage());
-        }
+            java.util.Scanner scanner = new java.util.Scanner(System.in);
+            System.out.print("Enter Total Marks : ");
+            int totalMarks = scanner.nextInt();
+            System.out.print("Enter Total number of Subjects : ");
+            int subject = scanner.nextInt();
+    
+            int average = totalMarks/ subject;
+    
+            System.out.println("Average marks = "+average);
         }
     }
 
 <b><h3>Output:</h3></b>
-Enter a character : e
-The ASCII value of e is 101
+Enter Total Marks : 456
+Enter Total number of Subjects : 6
+Average marks = 76
+
 </pre>
 
 

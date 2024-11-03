@@ -29,27 +29,31 @@
 
 <body>
     <pre>
-//Write a Java program to print the ascii value of a given character.
+//Java Program to find volume of cuboid
 
+    class VolumeOfCuboid{
+        double length; 
+        double breadth;
+        double height;
+        VolumeOfCuboid(double l, double h, double b){
+            length = l; 
+            breadth = b;
+            height = h;
+        }
+        double volumeOfCuboid(){
+            return length*breadth*height;
+        }
+    }
+    
     class Main{
         public static void main(String st[]){
-            java.io.InputStreamReader isr = new java.io.InputStreamReader(System.in);
-            java.io.BufferedReader reader = new java.io.BufferedReader(isr);
-        try{
-            System.out.print("Enter a character : ");
-            char c = (char)reader.read();
-            int ascii = c;
-            System.out.println("The ASCII value of "+c+ " is "+ascii);
-        }
-        catch(Throwable ex){
-            System.out.println(ex.getMessage());
-        }
+        VolumeOfCuboid cuboid = new VolumeOfCuboid(3,4,3);
+        System.out.println("Volume of cuboid : "+cuboid.volumeOfCuboid());
         }
     }
 
 <b><h3>Output:</h3></b>
-Enter a character : e
-The ASCII value of e is 101
+Volume of cuboid : 36.0
 </pre>
 
 

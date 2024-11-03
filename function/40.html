@@ -29,27 +29,26 @@
 
 <body>
     <pre>
-//Write a Java program to print the ascii value of a given character.
+//Java program to find surface area of cube
 
-    class Main{
-        public static void main(String st[]){
-            java.io.InputStreamReader isr = new java.io.InputStreamReader(System.in);
-            java.io.BufferedReader reader = new java.io.BufferedReader(isr);
-        try{
-            System.out.print("Enter a character : ");
-            char c = (char)reader.read();
-            int ascii = c;
-            System.out.println("The ASCII value of "+c+ " is "+ascii);
+    class SurfaceAreaOfCube{
+        double side;
+        SurfaceAreaOfCube(double s){
+            side = s;
         }
-        catch(Throwable ex){
-            System.out.println(ex.getMessage());
-        }
+        double surfaceAreaOfCube(){
+            return 6*side*side;
         }
     }
-
+    
+    class Main{
+        public static void main(String st[]){
+        SurfaceAreaOfCube cube = new SurfaceAreaOfCube(3);
+        System.out.println("Surface area of cube : "+cube.surfaceAreaOfCube());
+        }
+    }
 <b><h3>Output:</h3></b>
-Enter a character : e
-The ASCII value of e is 101
+Surface area of cube : 54.0
 </pre>
 
 

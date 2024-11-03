@@ -29,27 +29,25 @@
 
 <body>
     <pre>
-//Write a Java program to print the ascii value of a given character.
+//Java program to check vowel or consonant
 
-    class Main{
+    class CheckVowel{
         public static void main(String st[]){
-            java.io.InputStreamReader isr = new java.io.InputStreamReader(System.in);
-            java.io.BufferedReader reader = new java.io.BufferedReader(isr);
-        try{
-            System.out.print("Enter a character : ");
-            char c = (char)reader.read();
-            int ascii = c;
-            System.out.println("The ASCII value of "+c+ " is "+ascii);
+        
+        char ch = 'A';
+    
+        if(ch=='a' || ch=='o' || ch=='i' || ch=='e' || ch=='u' || ch=='A' || ch=='E' || ch=='I' || ch == 'O' || ch=='U')
+        {
+        System.out.println(ch+" is Vowel ");
         }
-        catch(Throwable ex){
-            System.out.println(ex.getMessage());
+        else 
+        {
+        System.out.println(ch+" is Consonant");
         }
         }
     }
-
 <b><h3>Output:</h3></b>
-Enter a character : e
-The ASCII value of e is 101
+A is Vowel
 </pre>
 
 
