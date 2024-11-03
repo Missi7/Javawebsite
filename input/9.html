@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.io.FileReader;
+import java.io.IOException;
+        
+public class FileCharacterReader {
+public static void main(String[] args) {
+    // Replace with your file path
+    String filePath = "sample.txt";
+        
+try (FileReader fileReader = new FileReader(filePath)) {
+    int character;
+    System.out.println("File contents:");
+    // Read file character by character
+    while ((character = fileReader.read()) != -1) {
+    // Print each character to the console
+    System.out.print((char) character);
+}
+} 
+catch (IOException e) {
+    System.out.println("An error occurred while reading the file.");
+    e.printStackTrace();
+    }
+}
+}
+<b><h3>Output:</h3></b>
+File contents:
+This is a sample file.
+It contains multiple lines of text.
+</pre>
+
+
+</body>
+
+</html>

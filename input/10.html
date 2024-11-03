@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+        
+public class FileStatistics {
+public static void main(String[] args) {
+    String filePath = "sample.txt";
+        
+    // Initialize counters for lines, words, and characters
+    int lineCount = 0;
+    int wordCount = 0;
+    int characterCount = 0;
+        
+try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
+    String line;
+    System.out.println("File contents:");
+                    
+    // Read each line from the file
+    while ((line = bufferedReader.readLine()) != null) {
+    // Print the current line
+    System.out.println(line);
+                        
+    // Count lines
+    lineCount++;
+        
+    // Count characters (including spaces)
+    characterCount += line.length();
+        
+    // Count words (splitting by spaces)
+    String[] words = line.split("\s+"); // Splits by spaces, tabs, or newlines
+                    wordCount += words.length;
+}
+        
+    // Display the results
+    System.out.println("Statistics:");
+    System.out.println("Number of lines: " + lineCount);
+    System.out.println("Number of words: " + wordCount);
+    System.out.println("Number of characters: " + characterCount);
+        
+} 
+catch (IOException e) {
+System.out.println("An error occurred while reading the file.");
+    e.printStackTrace();
+    }
+    }
+}        
+<b><h3>Output:</h3></b>
+File contents:
+This is a sample file.
+It contains multiple lines of text.
+
+Statistics:
+Number of lines: 2
+Number of words: 8
+Number of characters: 47
+</pre>
+
+
+</body>
+
+</html>
