@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+        import java.sql.Connection;
+        import java.sql.DriverManager;
+        import java.sql.PreparedStatement;
+        import java.sql.SQLException;
+        
+        // Custom exception for SQL query failure
+        class SQLQueryException extends Exception {
+            public SQLQueryException(String message) {
+                super(message);
+            }
+        }
+        
+        public class SQLQueryHandler {
+        
+            // Method to establish database connection
+            public static Connection connectToDatabase() throws SQLException {
+                String url = "jdbc:mysql://localhost:3306/mydb"; // Database URL
+                String username = "root";                        // Database username
+                String password = "password";                    // Database password
+                return DriverManager.getConnection(url, username, password);
+            }
+        
+            // Method to insert data into a table
+            public static void insertData(Connection connection, String query, String[] params) throws SQLQueryException {
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                    for (int i = 0; i &lt; params.length; i++) {
+                        preparedStatement.setString(i + 1, params[i]);
+                    }
+                    int rowsAffected = preparedStatement.executeUpdate();
+                    if (rowsAffected > 0) {
+                        System.out.println("Insert successful.");
+                    } else {
+                        throw new SQLQueryException("Insert failed.");
+                    }
+                } catch (SQLException e) {
+                    throw new SQLQueryException("Insert operation failed: " + e.getMessage());
+                }
+            }
+        
+            // Method to update data in a table
+            public static void updateData(Connection connection, String query, String[] params) throws SQLQueryException {
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                    for (int i = 0; i &lt; params.length; i++) {
+                        preparedStatement.setString(i + 1, params[i]);
+                    }
+                    int rowsAffected = preparedStatement.executeUpdate();
+                    if (rowsAffected > 0) {
+                        System.out.println("Update successful.");
+                    } else {
+                        throw new SQLQueryException("Update failed.");
+                    }
+                } catch (SQLException e) {
+                    throw new SQLQueryException("Update operation failed: " + e.getMessage());
+                }
+            }
+        
+            // Method to delete data from a table
+            public static void deleteData(Connection connection, String query, String[] params) throws SQLQueryException {
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                    for (int i = 0; i &lt; params.length; i++) {
+                        preparedStatement.setString(i + 1, params[i]);
+                    }
+                    int rowsAffected = preparedStatement.executeUpdate();
+                    if (rowsAffected > 0) {
+                        System.out.println("Delete successful.");
+                    } else {
+                        throw new SQLQueryException("Delete failed.");
+                    }
+                } catch (SQLException e) {
+                    throw new SQLQueryException("Delete operation failed: " + e.getMessage());
+                }
+            }
+        
+            public static void main(String[] args) {
+                try {
+                    // Connect to the database
+                    Connection connection = connectToDatabase();
+        
+                    // Example 1: Insert Operation
+                    String insertQuery = "INSERT INTO users (name, email) VALUES (?, ?)";
+                    String[] insertParams = {"Manjit", "manjitit33@gmail.com"};
+                    insertData(connection, insertQuery, insertParams);
+        
+                    // Example 2: Update Operation
+                    String updateQuery = "UPDATE users SET email = ? WHERE name = ?";
+                    String[] updateParams = {"newemail@example.com", "John Doe"};
+                    updateData(connection, updateQuery, updateParams);
+        
+                    // Example 3: Delete Operation
+                    String deleteQuery = "DELETE FROM users WHERE name = ?";
+                    String[] deleteParams = {"Manjit"};
+                    deleteData(connection, deleteQuery, deleteParams);
+        
+                    // Close the connection after operations
+                    connection.close();
+        
+                } catch (SQLException e) {
+                    System.out.println("Database connection failed: " + e.getMessage());
+                } catch (SQLQueryException e) {
+                    System.out.println("Error: " + e.getMessage());
+                }
+            }
+        }
+<b><h3>Output:</h3></b>
+Insert successful.
+Update successful.
+Delete successful.
+</pre>
+
+
+</body>
+
+</html>
