@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class transpose
+{
+    public static void main(String st[])
+{
+    int matrixA[][]={{1,2},{3,4}};
+    int transpose[][]=new int[matrixA.length][matrixA[0].length];
+    int i=0,j=0;
+    System.out.println("Matrix A");
+    for(i=0;i&lt;matrixA.length;i++)
+    {
+    for(j=0;j&lt;matrixA[i].length;j++)
+    {
+        System.out.print(matrixA[i][j]+" ");
+    }
+    System.out.println("  ");
+}
+    for(i=0;i&lt;matrixA.length;i++)
+    {
+        for(j=0;j&lt;matrixA[i].length;j++)
+        {
+            transpose[j][i]=matrixA[i][j];
+        }
+    }
+    System.out.println("Transpose of MatrixA : ");
+    for(i=0;i&lt;transpose.length;i++)
+    {
+        for(j=0;j&lt;transpose[i].length;j++)
+        {
+            System.out.print(transpose[i][j]+" ");
+        }
+        System.out.println("  ");
+    }
+            }
+}
+<b><h3>Output:</h3></b>
+Matrix A
+1 2
+3 4
+Transpose of MatrixA :
+1 3
+2 4
+</pre>
+
+
+</body>
+
+</html>

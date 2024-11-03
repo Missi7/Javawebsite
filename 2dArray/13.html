@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+    
+public class SparseMatrix {
+    
+public static boolean isSparseMatrix(int[][] matrix, int rows, int cols) {
+int zeroCount = 0;
+int totalElements = rows * cols;
+    
+// Counting the number of zeroes in the matrix
+for (int i = 0; i &lt; rows; i++) {
+    for (int j = 0; j &lt; cols; j++) {
+        if (matrix[i][j] == 0) {
+            zeroCount++;
+        }
+    }
+}
+            
+// Check if more than half of the elements are zeros
+        return zeroCount > (totalElements / 2);
+}
+        
+public static void main(String[] args) throws IOException {
+   BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+   System.out.print("Enter the number of rows: ");
+   int rows = Integer.parseInt(reader.readLine());
+   System.out.print("Enter the number of columns: ");
+   int cols = Integer.parseInt(reader.readLine());
+            
+   int[][] matrix = new int[rows][cols];
+            
+   System.out.println("Enter the elements of the matrix:");
+   for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            matrix[i][j] = Integer.parseInt(reader.readLine());
+        }
+}
+            
+    if (isSparseMatrix(matrix, rows, cols)) {
+        System.out.println("The matrix is a sparse matrix.");
+    } 
+    else {
+        System.out.println("The matrix is not a sparse matrix.");
+            }
+    }
+}
+<b><h3>Output:</h3></b>
+Enter the number of rows: 3
+Enter the number of columns: 3
+Enter the elements of the matrix:
+1
+0
+0
+0
+0
+2
+0
+0
+0
+The matrix is a sparse matrix.
+</pre>
+
+
+</body>
+
+</html>
