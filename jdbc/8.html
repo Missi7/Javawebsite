@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+import java.sql.*;
+import java.util.Scanner;
+        
+public class ScrollableUpdateableResultSet {
+private static final String URL = "jdbc:mysql://localhost:3306/school"; 
+private static final String USERNAME = "root"; 
+private static final String PASSWORD = "java"; 
+        
+public static void main(String[] args) {
+    try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+    // Create a statement for scrollable and updatable ResultSet
+    String query = "SELECT * FROM students";
+    Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+    ResultSet rs = stmt.executeQuery(query);
+        
+    Scanner scanner = new Scanner(System.in);
+    boolean exit = false;
+        
+    while (!exit) {
+        System.out.println("Options:");
+        System.out.println("1. Insert a new student");
+        System.out.println("2. Update an existing student");
+        System.out.println("3. Delete a student");
+        System.out.println("4. Display all students");
+        System.out.println("5. Exit");
+        System.out.print("Choose an option: ");
+        int choice = scanner.nextInt();
+        
+    switch (choice) {
+    case 1:
+        // Insert a new student
+        System.out.print("Enter student name: ");
+        String name = scanner.next();
+        System.out.print("Enter student age: ");
+        int age = scanner.nextInt();
+        rs.moveToInsertRow();
+        rs.updateString("name", name);
+        rs.updateInt("age", age);
+        rs.insertRow();
+        System.out.println("Inserted new student: " + name);
+        break;
+        
+    case 2:
+        // Update an existing student
+        System.out.print("Enter student ID to update: ");
+        int updateId = scanner.nextInt();
+        boolean found = false;
+        
+    while (rs.next()) {
+        if (rs.getInt("id") == updateId) {
+            found = true;
+            System.out.print("Enter new name: ");
+            String newName = scanner.next();
+            System.out.print("Enter new age: ");
+            int newAge = scanner.nextInt();
+            rs.updateString("name", newName);
+            rs.updateInt("age", newAge);
+            rs.updateRow();
+            System.out.println("Updated student ID " + updateId);
+            break;
+        }
+    }
+        
+    if (!found) {
+        System.out.println("Student ID " + updateId + " not found.");
+    }
+    rs.beforeFirst(); // Reset cursor position
+    break;
+        
+    case 3:
+        // Delete a student
+        System.out.print("Enter student ID to delete: ");
+        int deleteId = scanner.nextInt();
+        found = false;
+        
+        while (rs.next()) {
+            if (rs.getInt("id") == deleteId) {
+                found = true;
+                rs.deleteRow();
+                System.out.println("Deleted student ID " + deleteId);
+                break;
+            }
+        }
+        
+                if (!found) {
+                System.out.println("Student ID " + deleteId + " not found.");
+                }
+                rs.beforeFirst(); // Reset cursor position
+                break;
+        
+    case 4:
+        // Display all students
+        System.out.println("Students List:");
+        rs.beforeFirst(); // Move cursor to the beginning
+        while (rs.next()) {
+            System.out.println("ID: " + rs.getInt("id") + ", Name: " + rs.getString("name") + ", Age: " + rs.getInt("age"));
+        }
+        break;
+        
+    case 5:
+        exit = true;
+        break;
+        
+        default:
+        System.out.println("Invalid option. Please try again.");
+        }
+        }
+        } 
+    catch (SQLException e) {
+        System.out.println(e.getMessage());
+        }
+    }
+}
+<b><h3>Output:</h3></b>
+Options:
+1. Insert a new student
+2. Update an existing student
+3. Delete a student
+4. Display all students
+5. Exit
+Choose an option: 1
+Enter student name: Misbah
+Enter student age: 20
+Inserted new student: Misbah
+
+Options:
+1. Insert a new student
+2. Update an existing student
+3. Delete a student
+4. Display all students
+5. Exit
+Choose an option: 4
+Students List:
+ID: 1, Name: Manjit kumar, Age: 21
+ID: 2, Name: Sandeep, Age: 22
+ID: 3, Name: Misbah, Age: 20
+
+Options:
+1. Insert a new student
+2. Update an existing student
+3. Delete a student
+4. Display all students
+5. Exit
+Choose an option: 2
+Enter student ID to update: 3
+Enter new name: Misbah Ansari
+Enter new age: 21
+Updated student ID 3
+
+Options:
+1. Insert a new student
+2. Update an existing student
+3. Delete a student
+4. Display all students
+5. Exit
+Choose an option: 4
+Students List:
+ID: 1, Name: Misbah Ansari, Age: 21
+ID: 2, Name: Sandeep, Age: 22
+ID: 3, Name: Misbah Ansari, Age: 21
+
+</pre>
+
+
+</body>
+
+</html>

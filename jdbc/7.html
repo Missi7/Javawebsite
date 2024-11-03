@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+public class Jdbc7 {
+public static void main(String[] args) throws ClassNotFoundException,java.sql.SQLException
+{
+    Class.forName("com.mysql.cj.jdbc.Driver");
+    java.sql.ResultSet res=null;
+    int rowNum =0;
+    java.sql.Connection con = java.sql.DriverManager.getConnection("jdbc:mysql://localhost:/Myjava", "root", "java");
+    if (con!=null) {
+        System.out.println("Conection successful");
+    }
+    else
+    {
+        System.out.println("Not connectedc");
+    }
+    java.io.BufferedReader input = new java.io.BufferedReader(new java.InputStreamReader(System.in));
+    System.out.println("Enter Row Number: ");
+try
+{
+    rowNum = Integer.parseInt(input.readLine());
+}
+catch(java.io.IOException e)
+{
+    System.out.println(e.getMessage());
+}
+catch(NumberFormatException e)
+{
+    System.out.println(e.getMessage());
+}
+java.sql.Statement st = con.createStatement(java.sql.ResultSet.CONCUR_READ_ONLY,java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE);
+try
+{
+    res =st.executeQuery("select * from student ");
+}
+catch(java.sql.SQLSyntaxErrorException e)
+{
+    System.out.println(e.getMessage());
+}
+                   
+    int i=1;
+    while (res.next()) {
+    if (i==rowNum) {
+        int Roll_no = res.getInt("Roll_no");
+        String Name = res.getString("Name");
+        int marks = res.getInt("Marks");
+        System.out.println("Roll No : "+Roll_no);
+        System.out.println("Name : "+Name);
+        System.out.println("Marks : "+marks);
+    }
+    i++;
+    }
+}
+}
+<b><h3>Output:</h3></b>
+Enter Row Number:
+2
+Roll No : 2
+Name : Misbah
+Marks : 96
+</pre>
+
+
+</body>
+
+</html>

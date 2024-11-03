@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+public class Jdbc6 {
+public static void main(String[] args) throws ClassNotFoundException,java.sql.SQLException
+{
+    Class.forName("com.mysql.cj.jdbc.Driver");
+    java.sql.ResultSet res=null;
+    java.sql.Connection con = java.sql.DriverManager.getConnection("jdbc:mysql://localhost:/Myjava", "root", "java");
+    if (con!=null) {
+        System.out.println("Conection successful");
+    }
+    else
+    {
+        System.out.println("Not connectedc");
+    }
+    java.sql.Statement st = con.createStatement();
+    try
+    {
+        res =st.executeQuery("select * from student ");
+    }
+    catch(java.sql.SQLSyntaxErrorException e)
+    {
+        System.out.println(e.getMessage());
+    }
+        //System.out.println("Rows "+res.next());
+        int i=0;
+        while (res.next()) {
+        //System.out.println("Rows "+res.next());
+        int Roll_no = res.getInt("Roll_no");
+        String Name = res.getString("Name");
+        int marks = res.getInt("Marks");
+        System.out.println("Roll No : "+Roll_no);
+        System.out.println("Name : "+Name);
+        System.out.println("Marks : "+marks);
+    }
+}
+}
+<b><h3>Output:</h3></b>
+Conection successful
+Roll No : 1
+Name : Misbah
+Marks : 98
+Roll No : 2
+Name : Misbah
+Marks : 96
+Roll No : 3
+Name : Abhishek
+Marks : 96
+</pre>
+
+
+</body>
+
+</html>

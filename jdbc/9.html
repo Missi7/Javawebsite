@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 1.2rem;
+
+        }
+
+        table {
+            width: 80%;
+            margin-left: 100px;
+            text-align: left;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+class Database
+{
+java.sql.Connection con;
+java.sql.PreparedStatement pstm;
+//java.sql.Statement stm;
+public Database(String url,String user,String pwd)
+    {
+    try
+    {
+    Class.forName("com.mysql.cj.jdbc.Driver");
+    con = java.sql.DriverManager.getConnection(url,user,pwd);
+    }
+    catch(ClassNotFoundException e)
+    {
+        System.out.println(e.getMessage());
+    }
+    catch(java.sql.SQLException e)
+    {
+        System.out.println(e.getMessage());
+    }
+    }
+    int insert_DB(String q,String rno,String n,String c,int a,String dob) throws java.sql.SQLException
+{
+    pstm = con.prepareStatement(q);
+    pstm.setString(1, rno);
+    pstm.setString(2, n);
+    pstm.setString(3, c);
+    pstm.setInt(4, a);
+    pstm.setString(5, dob);
+    return pstm.executeUpdate();
+}
+int update_DB(String q,String rno,String n,String c,int a,String dob,String cond) throws java.sql.SQLException
+{
+    pstm = con.prepareStatement(q);
+    pstm.setString(1, rno);
+    pstm.setString(2, n);
+    pstm.setString(3, c);
+    pstm.setInt(4, a);
+    pstm.setString(5, dob);
+    pstm.setString(6, cond);
+    return pstm.executeUpdate();
+}
+        
+int delete_DB(String q,String wrn) throws java.sql.SQLException
+{
+    pstm = con.prepareStatement(q);
+    pstm.setString(1, wrn);
+    return pstm.executeUpdate();
+}
+void close() throws java.sql.SQLException
+{
+con.close();
+}
+}
+        
+class Main
+{
+private String rollNo;
+private String name;
+private String course;
+private int Age;
+private String DoB;
+void setRollNo(String r)
+{
+    rollNo = r;
+}
+void setName(String n)
+{
+    name = n;
+}
+void setCourse(String c)
+{
+    course = c;
+}
+void setAge(int age)
+{
+    Age = age;
+}
+void setDoB(String d)
+{
+    DoB = d;
+}
+String getRollNo()
+{
+    return rollNo;		
+}
+String getName()
+{
+    return name;
+}
+String getCourse()
+{
+    return course;		
+}
+int getAge()
+{
+    return Age;
+}
+String getDoB()
+{
+    return DoB;	
+}
+void insert(Database db)
+{
+    try
+{
+    java.io.BufferedReader input = new java.io.BufferedReader(new javInputStreamReader(System.in));
+    System.out.println("Enter Roll no : ");
+    setRollNo(input.readLine());
+    System.out.println("Enter your Name : ");
+    setName(input.readLine());
+    System.out.println("Enter Course : ");
+    setCourse(input.readLine());
+    System.out.println("Enter Age: ");
+    setAge(Integer.parseInt(input.readLine()));
+    System.out.println("Enter Date of Birth : ");
+    setDoB(input.readLine());
+    int ok =db.insert_DB("insert into student value(?,?,?,?,?)",getRollgetName(),getCourse(),getAge(),getDoB());
+if (ok!=0) {
+    System.out.println("Row Inserted Successfully!");
+}
+else
+{
+    System.out.println("Row Not Inserted!"); 
+}
+}
+catch(java.io.IOException e)
+{
+    System.out.println(e.getMessage());
+}
+catch(NumberFormatException e)
+{
+    System.out.println("Please Enter Positive value ");
+}
+catch(java.sql.SQLException e)
+{
+System.out.println(e.getMessage());
+}
+}
+void update(Database db)
+{
+String query = "update student set Roll_no = ? , Name = ? ,course = ? ,AgeDoB = ? where Roll_no = ?";
+String wrn=" ";
+try
+    {
+java.io.BufferedReader input = new java.io.BufferedReader(new jaInputStreamReader(System.in));
+System.out.println("Enter Roll no : ");
+setRollNo(input.readLine());
+System.out.println("Enter your Name : ");
+setName(input.readLine());
+System.out.println("Enter Course : ");
+setCourse(input.readLine());
+System.out.println("Enter Age: ");
+setAge(Integer.parseInt(input.readLine()));
+System.out.println("Enter Date of Birth : ");
+setDoB(input.readLine());
+System.out.println("Where :");
+wrn = input.readLine();
+int ok =db.update_DB(query,getRollNo(),getName(),getCourse(),getgetDoB(),wrn);
+if (ok!=0) {
+    System.out.println("Row Updated Successfully!");
+}
+else
+{
+    System.out.println("Row Not Updated!"); 
+} 
+}
+catch(java.io.IOException e)
+{
+    System.out.println(e.getMessage());
+}
+catch(NumberFormatException e)
+{
+    System.out.println("Please Enter Positive value ");
+}
+catch(java.sql.SQLException e)
+{
+    System.out.println(e.getMessage());
+}
+}
+void delete(Database db)
+{
+String query = "delete from student where Roll_no = ?";
+String wrn=" ";
+try
+{
+java.io.BufferedReader input = new java.io.BufferedReader(new javInputStreamReader(System.in));
+System.out.println("Where :");
+wrn = input.readLine();
+int ok= db.delete_DB(query,wrn);
+if (ok!=0) {
+    System.out.println("Row deleted Successfully!");
+}
+else
+{
+    System.out.println("Row Not Deleted!"); 
+}
+}
+catch(java.io.IOException e)
+{
+    System.out.println(e.getMessage());
+}
+catch(java.sql.SQLException e)
+{
+    System.out.println(e.getMessage());
+}
+}
+public static void main(String st[])
+{
+Database db = new Database("jdbc:mysql://localhost:/mydb","root","java");
+Main obj = new Main();
+int select=0;
+java.io.BufferedReader input = new java.io.BufferedReader(new jaInputStreamReader(System.in));
+while (select!=4) {
+try
+{
+    select = Integer.parseInt(input.readLine());
+}
+catch(java.io.IOException e)
+{
+    System.out.println(e.getMessage());
+}
+if (select==1) {
+    obj.insert(db);
+}
+else if (select == 2) {
+    obj.update(db);
+}
+else if (select == 3) {
+    obj.delete(db);
+}
+else
+{
+    System.out.println("Invalied!");
+}
+    }
+}
+}
+<b><h3>Output:</h3></b>
+Insert : 1
+Update : 2
+Delete : 3
+1
+Enter Roll no :
+4226/22
+Enter your Name :
+Misbah
+Enter Course :
+BCA
+Enter Age:
+20
+Enter Date of Birth :
+2004-08-27
+Row Inserted Successfully!
+Insert : 1
+Update : 2
+Delete : 3
+1
+Enter Roll no :
+4204/22
+Enter your Name :
+Abhishek
+Enter Course :
+BCA
+Enter Age:
+20
+Enter Date of Birth :
+2004-06-21
+Row Inserted Successfully!
+Insert : 1
+Update : 2
+Delete : 3
+1
+Enter Roll no :
+4231/22
+Enter your Name :
+Pawan
+Enter Course :
+BCA
+Enter Age:
+20
+Enter Date of Birth :
+2004-09-18
+Row Inserted Successfully!
+Insert : 1
+Update : 2
+Delete : 3
+1
+Enter Roll no :
+4201/22
+Enter your Name :
+Kartik
+Enter Course :
+BCA
+Enter Age:
+22
+Enter Date of Birth :
+2002-01-01
+Row Inserted Successfully!
+Insert : 1
+Update : 2
+Delete : 3
+2
+Enter Roll no :
+4298/22
+Enter your Name :
+Misbah Ansari
+Enter Course :
+BCA
+Enter Age:
+20
+Enter Date of Birth :
+2005-08-27
+Where :
+4226/22
+Row Updated Successfully!
+Insert : 1
+Update : 2
+Delete : 3
+3
+Where :
+4231/22
+Row deleted Successfully!
+Insert : 1
+Update : 2
+Delete : 3
+4
+Invalied!
+</pre>
+</body>
+
+</html>
